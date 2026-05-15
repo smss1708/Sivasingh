@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-box;
         }
 
         body {
@@ -26,19 +25,16 @@
         }
 
         .container {
-            background rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 50px 40px;
             max-width: 550px;
             width: 100%;
             text-align: center;
-            box-shadow: 
-                0 20px 60px rgba(255, 107, 157, 0.08),
-                0 40px 80px rgba(255, 107, 157, 0.12),
-                0 0 0 1px rgba(255, 107, 157, 0.1);
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.08);
             position: relative;
-            min-height: 500px;
+            min-height: 550px;
         }
 
         .header-icon {
@@ -69,63 +65,37 @@
             font-weight: 300;
         }
 
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, #ff8fab, #ffb3c6);
-            margin: 0 auto 25px auto;
-            border-radius: 10px;
-        }
-
-        /* Lyrics Box */
         .lyrics-box {
-            min-height: 300px;
+            min-height: 250px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 10px;
         }
 
         .line {
-            font-size: 1.3em;
+            font-size: 1.4em;
             color: #444;
-            font-weight: 400;
-            margin: 12px 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease;
-            text-shadow: 0 0 0px;
+            display: none;
+            animation: fadeIn 1s ease forwards;
         }
 
-        .line.show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .line .emoji-big {
-            font 1.4em;
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .line.highlight {
+        .highlight-line {
             color: #e75480;
             font-weight: 600;
-        }
-
-        .line.highlight-line {
-            color: #e75480;
-            font-size: 1.5em;
-            font-weight: 600;
+            font-size: 1.6em;
         }
 
         .progress-bar {
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: #ffe0e6;
             border-radius: 10px;
-            margin-top: 25px;
+            margin-top: 40px;
             overflow: hidden;
         }
 
@@ -133,290 +103,139 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, #ff8fab, #e75480);
-            border-radius: 10px;
-            transition: width 1s linear;
+            transition: width 0.5s linear;
         }
 
         .timer {
-            color  b0b0b0);
-            font-size: 0.8em;
-            margin-top: 12px;
-            font-weight: 300;
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-top: 10px;
         }
 
         .end-message {
             display: none;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 300px;
         }
 
         .end-message.active {
             display: flex;
-        }
-
-        .end-message h2 {
-            font-family: 'Great Vibes', cursive;
-            color: #e75480;
-            font-size: 2.8em;
-            margin: 10px 0;
-        }
-
-        .end-message p {
-            font-size: 1.2em;
-            color: #666;
-            margin: 8px 0;
+            animation: fadeIn 1.5s ease;
         }
 
         .btn-yes {
             margin-top: 20px;
-            padding: 14px 50px;
-            font-size: 1.2em;
+            padding: 14px 40px;
             background: linear-gradient(45deg, #ff8fab, #e75480);
-            color: #fff);
-            color: #fff;
+            color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(231, 84, 128, 0.3);
-            transition: all 0.3s;
-            font-weight
-        }
-
-        .btn-yes:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(231, 84, 128, 0.4);
-            transform: scale(1.05);
-        }
-
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left     100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(231, 84, 128, 0.3);
         }
 
         .floating-hearts span {
             position: absolute;
-            font-size: 20px;
-            animation rise linear infinite;
-            opacity: 0.15;
+            animation: rise linear infinite;
+            opacity: 0.2;
         }
 
         @keyframes rise {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0.15;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .restart-btn {
-            background: none;
-            border: 1px solid #e75480;
-            color: #e75480;
-            font-size: 0.9em;
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.3s;
-        }
-            color: #e75480;
-        }
-
-        .restart btn:hover {
-            outline: none;
-        }
-
-        .restart-btn:hover       background: #ffe0e6;
-        }
-
-        @media (max-width: 480px) {
-            .container padding: 30px 20px;
-            }
-            .line font-size: 1.1em;
-            h1 { font-size: 2.5em; }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.2; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Hearts Background -->
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <div class="container">
-        <!-- Header -->
         <div class="header-icon">💖</div>
         <h1>Tum Ho</h1>
         <div class="subtitle">~ Mere liye sab kuch ~</div>
-        <div class="divider"></div>
 
-        <!-- Lyrics Section -->
         <div class="lyrics-box" id="lyricsBox">
-            <!-- Lines will be inserted by JS -->
-        </div>
+            </div>
 
-        <!-- End Message -->
         <div class="end-message" id="endMessage">
-            <div style="font-size: 4em; animation: floatHeart 2s ease-in-out infinite;">💕</div>
+            <div style="font-size: 3em;">💕</div>
             <h2>Tum Ho... Bas Tum Ho</h2>
-            <p style="font-size: 1.1em;">❤️ Har dhadkan kehti hai —<br>Main tumse pyar karta/karti hoon ❤️</p>
-            <button class="btn-yes" onclick="alert('Haan! 💖 Main bhi tumse pyar karta/karti hoon! 😍💕')">💌 Yes, I Love You Too! 💌</button>
-            <button class="restart-btn" onclick="restartSong()">🔄 Dobara Suno</button>
+            <p>Har dhadkan kehti hai — I Love You!</p>
+            <button class="btn-yes" onclick="alert('I Love You Too! ❤️')">💌 Yes, I Love You Too!</button>
+            <p style="cursor:pointer; color:#e75480; margin-top:15px;" onclick="location.reload()">🔄 Restart</p>
         </div>
 
-        <!-- Progress -->
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
-        <div class="timer" id="timer">0:00 / 1:02</div>
+        <div class="timer" id="timer">0:00 / 1:00</div>
     </div>
 
     <script>
-        // ========== LYRICS DATA ==========
         const lyrics = [
-            { text: "🌅 <span>, 'Subah ki pehli kiran ho tum', emoji: '🌅', highlight: false },
-            { text: "✨ 'Mere sapno ka jahan ho tum', emoji: '✨', highlight: false },
-            { text: "💓 'Har dhadkan mein basi ho tum', emoji: '💓', highlight: false },
-            { text: "🌟 'Tum ho, tum ho', emoji: '🌟', highlight: true },
-            { text: "🎯 'Tum ho meri manzil, tum ho mera safar', emoji: '🎯', highlight: false },
-            { text ": 'Tum ho meri khushi, tum ho mera ghar', emoji: '😊', highlight: false },
-            { text: "💔 'Tum bin toh lagta kya rakha hai yahan', emoji: '💔', highlight: false },
-            { text: "🌍 'Tum ho meri duniya, jahan emoji: '🌍', highlight: true },
-            { text: "💕 'Tum ho bas tum ho...', emoji: '💕', highlight: true }
+            { text: "Subah ki pehli kiran ho tum", emoji: "🌅" },
+            { text: "Mere sapno ka jahan ho tum", emoji: "✨" },
+            { text: "Har dhadkan mein basi ho tum", emoji: "💓" },
+            { text: "Tum ho, tum ho...", emoji: "🌟", highlight: true },
+            { text: "Meri manzil, mera safar ho tum", emoji: "🎯" },
+            { text: "Meri khushi, mera ghar ho tum", emoji: "😊" },
+            { text: "Tum bin kya rakha hai yahan", emoji: "💔" },
+            { text: "Tum ho meri puri duniya", emoji: "🌍", highlight: true },
+            { text: "Tum ho bas tum ho...", emoji: "💕", highlight: true }
         ];
 
         const lyricsBox = document.getElementById('lyricsBox');
-        const endMessage = document.getElementById('endMessage');
         const progressFill = document.getElementById('progressFill');
         const timerDisplay = document.getElementById('timer');
+        const endMessage = document.getElementById('endMessage');
 
         let currentIndex = 0;
-        let intervalId = null;
-        let startTime = null;
+        const totalDuration = 60; // 60 Seconds
+        const timePerLine = (totalDuration / lyrics.length) * 1000;
 
-        // ========== INITIALIZE ==========
-        function initSong() {
-            // Clear
-            lyricsBox.innerHTML = '';
-            endMessage.classList.remove('active');
-            lyricsBox.style.display = 'flex';
-            currentIndex = 0;
-
-            // Create line elements
-            lyrics.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'line' + (item.highlight ? ' highlight-line' : '');
-                div.id = 
-                div.innerHTML = `
-                    <span class="emoji-big">${item.emoji}</span>
-                    <span>${item.text}</span>
+        function showNextLine() {
+            if (currentIndex < lyrics.length) {
+                const item = lyrics[currentIndex];
+                lyricsBox.innerHTML = `
+                    <div class="line ${item.highlight ? 'highlight-line' : ''}" style="display:block">
+                        <span>${item.emoji}</span><br>
+                        ${item.text}
+                    </div>
                 `;
-                lyricsBox.appendChild(div);
-            });
+                
+                currentIndex++;
+                let progress = (currentIndex / lyrics.length) * 100;
+                progressFill.style.width = progress + "%";
+                
+                let timeSpent = Math.round((currentIndex / lyrics.length) * totalDuration);
+                timerDisplay.textContent = `0:${timeSpent < 10 ? '0'+timeSpent : timeSpent} / 1:00`;
 
-            // Show first line immediately
-            setTimeout(() => {
-                showLine(currentLine(0);
-            }, 800);
-
-            // Start timerDisplay each line every 6 seconds (9 lines × 6s = 54s + ending)
-            let delay = 500;
-            for (let i = 0; i < lyrics.length; i++) {
-                const lineEl = document.getElementById(line-${i});
-                if    continue;
-                setTimeout(() => {
-                    showLine(i);
-                }, delay);
-                delay += 6000; // 6 seconds per line
+                setTimeout(showNextLine, timePerLine);
+            } else {
+                lyricsBox.style.display = 'none';
+                endMessage.classList.add('active');
+                timerDisplay.textContent = "1:00 / 1:00 ✅";
             }
-
-            // Show end message after all lines (approx 54s + initial delay)
-            const totalDuration = 800 + (lyrics.length * 6000);
-            setTimeout(() => {
-                showEnd();
-            }, totalDuration);
         }
 
-        function showLine(index) {
-            const lineEl = document.getElementById(`line-${index}`);
-            if (lineEl) {
-                lineEl.class        line.classList.add('show');
-            }
-            currentIndex Math.max(currentIndex, index + 1);
-            updateProgress();
-        }
-
-        function showLineImmediate(index) {
-            showLine(index);
-        }
-
-        function show })
-            endMessage.classList.remove('active');
-            lyricsBox.style.display = 'none';
-            endMessage.classList.add('active');
-            progressFill.style.width = '100%';
-            timerDisplay.textContent = '1:02 ✅';
-        }
-
-        function updateProgress() {
-            const percent = Math.min((currentIndex / lyrics.length) * 100, 100);
-            progressFill.style.width = percent + '%';
-
-            // Timer
-            const seconds = Math.floor((currentIndex / lyrics.length) * 62);
-            const sec = time % 60;
-            const secs = seconds % 60;
-            timerDisplay.textContent = `${min}:${secs.toString().padStart(2, '0')} / 1:02`;
-        }
-
-        // ========== RESTART ==========
-        function restartSong() {
-            // Clear any existing timeouts
-            const highestTimeoutId = window.setTimeout(() => {}, 0);
-            for (let i = 0 i <= highestTimeoutId; i++) {
-                window.clearTimeout(i);
-            }
-
-            lyricsBox.innerHTML = '';
-            lyricsBox.style.display = 'flex';
-            endMessage.classList.remove('active');
-            progressFill.style.width = '0%';
-            display currentIndex = 0;
-timerDisplay.textContent = '0:00 / 1:02';
-
-            initSong();
-        }
-
-        // ========== FLOATING HEARTS ==========
-        function createFloatingHearts() {
+        function createHearts() {
             const container = document.getElementById('floatingHearts');
-            const hearts = ['❤️', '💖', '💕', '💗', '💓', '♥️'];
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 15; i++) {
                 const span = document.createElement('span');
-                span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                span.textContent = '❤️';
                 span.style.left = Math.random() * 100 + '%';
-                span.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                span.style.animationDelay = (Math.random() * 20) + 's';
-                span.style.fontSize = (Math.random() * 15 + 12) + 'px';
+                span.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                span.style.animationDuration = (Math.random() * 5 + 5) + 's';
                 container.appendChild(span);
             }
         }
 
-        // ========== START ==========
-        createFloatingHearts();
-
-        // Small delay          window.addEventListener('load', () => {
-            setTimeout(initSong, 500);
-        });
+        window.onload = () => {
+            createHearts();
+            setTimeout(showNextLine, 1000);
+        };
     </script>
-
 </body>
 </html>
