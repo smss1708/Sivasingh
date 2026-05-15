@@ -3,143 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tum Ho - My Love ❤️</title>
+    <title>Tum Ho ❤️ - My Love</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffffff, #fff5f7);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow: hidden;
         }
+
         .container {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
+            background rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 550px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 
+                0 20px 60px rgba(255, 107, 157, 0.08),
+                0 40px 80px rgba(255, 107, 157, 0.12),
+                0 0 0 1px rgba(255, 107, 157, 0.1);
+            position: relative;
+            min-height: 500px;
         }
+
+        .header-icon {
+            font-size: 3.5em;
+            margin-bottom: 5px;
+            animation: floatHeart 2s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         h1 {
-            color: #ff6b9d;
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255,107,157,0.5);
+            font-family: 'Great Vibes', cursive;
+            color: #e75480;
+            font-size: 3.2em;
+            margin-bottom: 0px;
+            letter-spacing: 2px;
         }
-        .hearts {
-            font-size: 2em;
-            margin: 10px 0;
-            animation: pulse 1.5s infinite;
+
+        .subtitle {
+            color: #c0a0a8;
+            font-size: 0.9em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 300;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #ff8fab, #ffb3c6);
+            margin: 0 auto 25px auto;
+            border-radius: 10px;
         }
-        .lyrics {
-            color: #fff;
+
+        /* Lyrics Box */
+        .lyrics-box {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .line {
             font-size: 1.3em;
-            line-height: 2;
-            margin: 30px 0;
-            font-style: italic;
-        }
-        .lyrics span {
-            display: block;
+            color: #444;
+            font-weight: 400;
+            margin: 12px 0;
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            transform: translateY(20px);
+            transition: all 1s ease;
+            text-shadow: 0 0 0px;
         }
-        .lyrics span:nth-child(1) { animation-delay: 0.5s; }
-        .lyrics span:nth-child(2) { animation-delay: 2s; }
-        .lyrics span:nth-child(3) { animation-delay: 3.5s; }
-        .lyrics span:nth-child(4) { animation-delay: 5s; }
-        .lyrics span:nth-child(5) { animation-delay: 6.5s; }
-        .lyrics span:nth-child(6) { animation-delay: 8s; }
-        .lyrics span:nth-child(7) { animation-delay: 9.5s; }
-        .lyrics span:nth-child(8) { animation-delay: 11s; }
-        .lyrics span:nth-child(9) { animation-delay: 12.5s; }
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
+
+        .line.show {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .btn {
+
+        .line .emoji-big {
+            font 1.4em;
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
+            margin-right: 6px;
+        }
+
+        .line.highlight {
+            color: #e75480;
+            font-weight: 600;
+        }
+
+        .line.highlight-line {
+            color: #e75480;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: #ffe0e6;
+            border-radius: 10px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff8fab, #e75480);
+            border-radius: 10px;
+            transition: width 1s linear;
+        }
+
+        .timer {
+            color  b0b0b0);
+            font-size: 0.8em;
+            margin-top: 12px;
+            font-weight: 300;
+        }
+
+        .end-message {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .end-message.active {
+            display: flex;
+        }
+
+        .end-message h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #e75480;
+            font-size: 2.8em;
+            margin: 10px 0;
+        }
+
+        .end-message p {
             font-size: 1.2em;
-            background: linear-gradient(45deg, #ff6b9d, #ff4757);
+            color: #666;
+            margin: 8px 0;
+        }
+
+        .btn-yes {
+            margin-top: 20px;
+            padding: 14px 50px;
+            font-size: 1.2em;
+            background: linear-gradient(45deg, #ff8fab, #e75480);
+            color: #fff);
             color: #fff;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 20px rgba(255,107,157,0.4);
+            box-shadow: 0 8px 25px rgba(231, 84, 128, 0.3);
+            transition: all 0.3s;
+            font-weight
         }
-        .btn:hover {
+
+        .btn-yes:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255,107,157,0.6);
+            box-shadow: 0 15px 35px rgba(231, 84, 128, 0.4);
+            transform: scale(1.05);
         }
-        .footer {
-            color: rgba(255,255,255,0.5);
-            margin-top: 30px;
-            font-size: 0.9em;
-        }
-        .falling-hearts {
+
+        .floating-hearts {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left     100%;
             height: 100%;
             pointer-events: none;
-            overflow: hidden;
             z-index: -1;
         }
-        .falling-hearts span {
+
+        .floating-hearts span {
             position: absolute;
-            font-size: 1.5em;
-            animation: fall linear infinite;
-            opacity: 0.3;
+            font-size: 20px;
+            animation rise linear infinite;
+            opacity: 0.15;
         }
-        @keyframes fall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.3; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .restart-btn {
+            background: none;
+            border: 1px solid #e75480;
+            color: #e75480;
+            font-size: 0.9em;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+            color: #e75480;
+        }
+
+        .restart btn:hover {
+            outline: none;
+        }
+
+        .restart-btn:hover       background: #ffe0e6;
+        }
+
+        @media (max-width: 480px) {
+            .container padding: 30px 20px;
+            }
+            .line font-size: 1.1em;
+            h1 { font-size: 2.5em; }
         }
     </style>
 </head>
 <body>
-    <div class="falling-hearts">
-        <span style="left:10%; animation-duration:8s; animation-delay:0s;">❤️</span>
-        <span style="left:30%; animation-duration:10s; animation-delay:2s;">💖</span>
-        <span style="left:50%; animation-duration:7s; animation-delay:4s;">❤️</span>
-        <span style="left:70%; animation-duration:9s; animation-delay:1s;">💕</span>
-        <span style="left:90%; animation-duration:11s; animation-delay:3s;">❤️</span>
-    </div>
+
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
 
     <div class="container">
-        <div class="hearts">💖 ❤️ 💖</div>
-        <h1>तुम हो</h1>
-        <p style="color: rgba(255,255,255,0.8); font-size: 1.1em; margin-bottom: 10px;">~ Mere liye tum hi sab kuch ho ~</p>
-        
-        <div class="lyrics">
-            <span>🌅 "Subah ki pehli kiran ho tum"</span>
-            <span>🌙 "Mere sapno ka jahan ho tum"</span>
-            <span>💓 "Har dhadkan mein basi ho tum"</span>
-            <span>✨ "Tum ho, tum ho"</span>
-            <span>🎯 "Tum ho meri manzil, tum ho mera safar"</span>
-            <span>😊 "Tum ho meri khushi, tum ho mera ghar"</span>
-            <span>💔 "Tum bin toh lagta hai kya rakha hai yahan"</span>
-            <span>🌍 "Tum ho meri duniya, tum ho mera jahan"</span>
-            <span>💕 "Tum ho... bas tum ho..."</span>
+        <!-- Header -->
+        <div class="header-icon">💖</div>
+        <h1>Tum Ho</h1>
+        <div class="subtitle">~ Mere liye sab kuch ~</div>
+        <div class="divider"></div>
+
+        <!-- Lyrics Section -->
+        <div class="lyrics-box" id="lyricsBox">
+            <!-- Lines will be inserted by JS -->
         </div>
 
-        <a href="#" class="btn" onclick="alert('Haan, main tumse pyar karta/karti hoon! ❤️')">💌 Yes, I Love You Too! 💌</a>
+        <!-- End Message -->
+        <div class="end-message" id="endMessage">
+            <div style="font-size: 4em; animation: floatHeart 2s ease-in-out infinite;">💕</div>
+            <h2>Tum Ho... Bas Tum Ho</h2>
+            <p style="font-size: 1.1em;">❤️ Har dhadkan kehti hai —<br>Main tumse pyar karta/karti hoon ❤️</p>
+            <button class="btn-yes" onclick="alert('Haan! 💖 Main bhi tumse pyar karta/karti hoon! 😍💕')">💌 Yes, I Love You Too! 💌</button>
+            <button class="restart-btn" onclick="restartSong()">🔄 Dobara Suno</button>
+        </div>
 
-        <div class="footer">Made with ❤️ for you</div>
+        <!-- Progress -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="timer" id="timer">0:00 / 1:02</div>
     </div>
+
+    <script>
+        // ========== LYRICS DATA ==========
+        const lyrics = [
+            { text: "🌅 <span>, 'Subah ki pehli kiran ho tum', emoji: '🌅', highlight: false },
+            { text: "✨ 'Mere sapno ka jahan ho tum', emoji: '✨', highlight: false },
+            { text: "💓 'Har dhadkan mein basi ho tum', emoji: '💓', highlight: false },
+            { text: "🌟 'Tum ho, tum ho', emoji: '🌟', highlight: true },
+            { text: "🎯 'Tum ho meri manzil, tum ho mera safar', emoji: '🎯', highlight: false },
+            { text ": 'Tum ho meri khushi, tum ho mera ghar', emoji: '😊', highlight: false },
+            { text: "💔 'Tum bin toh lagta kya rakha hai yahan', emoji: '💔', highlight: false },
+            { text: "🌍 'Tum ho meri duniya, jahan emoji: '🌍', highlight: true },
+            { text: "💕 'Tum ho bas tum ho...', emoji: '💕', highlight: true }
+        ];
+
+        const lyricsBox = document.getElementById('lyricsBox');
+        const endMessage = document.getElementById('endMessage');
+        const progressFill = document.getElementById('progressFill');
+        const timerDisplay = document.getElementById('timer');
+
+        let currentIndex = 0;
+        let intervalId = null;
+        let startTime = null;
+
+        // ========== INITIALIZE ==========
+        function initSong() {
+            // Clear
+            lyricsBox.innerHTML = '';
+            endMessage.classList.remove('active');
+            lyricsBox.style.display = 'flex';
+            currentIndex = 0;
+
+            // Create line elements
+            lyrics.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'line' + (item.highlight ? ' highlight-line' : '');
+                div.id = 
+                div.innerHTML = `
+                    <span class="emoji-big">${item.emoji}</span>
+                    <span>${item.text}</span>
+                `;
+                lyricsBox.appendChild(div);
+            });
+
+            // Show first line immediately
+            setTimeout(() => {
+                showLine(currentLine(0);
+            }, 800);
+
+            // Start timerDisplay each line every 6 seconds (9 lines × 6s = 54s + ending)
+            let delay = 500;
+            for (let i = 0; i < lyrics.length; i++) {
+                const lineEl = document.getElementById(line-${i});
+                if    continue;
+                setTimeout(() => {
+                    showLine(i);
+                }, delay);
+                delay += 6000; // 6 seconds per line
+            }
+
+            // Show end message after all lines (approx 54s + initial delay)
+            const totalDuration = 800 + (lyrics.length * 6000);
+            setTimeout(() => {
+                showEnd();
+            }, totalDuration);
+        }
+
+        function showLine(index) {
+            const lineEl = document.getElementById(`line-${index}`);
+            if (lineEl) {
+                lineEl.class        line.classList.add('show');
+            }
+            currentIndex Math.max(currentIndex, index + 1);
+            updateProgress();
+        }
+
+        function showLineImmediate(index) {
+            showLine(index);
+        }
+
+        function show })
+            endMessage.classList.remove('active');
+            lyricsBox.style.display = 'none';
+            endMessage.classList.add('active');
+            progressFill.style.width = '100%';
+            timerDisplay.textContent = '1:02 ✅';
+        }
+
+        function updateProgress() {
+            const percent = Math.min((currentIndex / lyrics.length) * 100, 100);
+            progressFill.style.width = percent + '%';
+
+            // Timer
+            const seconds = Math.floor((currentIndex / lyrics.length) * 62);
+            const sec = time % 60;
+            const secs = seconds % 60;
+            timerDisplay.textContent = `${min}:${secs.toString().padStart(2, '0')} / 1:02`;
+        }
+
+        // ========== RESTART ==========
+        function restartSong() {
+            // Clear any existing timeouts
+            const highestTimeoutId = window.setTimeout(() => {}, 0);
+            for (let i = 0 i <= highestTimeoutId; i++) {
+                window.clearTimeout(i);
+            }
+
+            lyricsBox.innerHTML = '';
+            lyricsBox.style.display = 'flex';
+            endMessage.classList.remove('active');
+            progressFill.style.width = '0%';
+            display currentIndex = 0;
+timerDisplay.textContent = '0:00 / 1:02';
+
+            initSong();
+        }
+
+        // ========== FLOATING HEARTS ==========
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['❤️', '💖', '💕', '💗', '💓', '♥️'];
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                span.style.left = Math.random() * 100 + '%';
+                span.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                span.style.animationDelay = (Math.random() * 20) + 's';
+                span.style.fontSize = (Math.random() * 15 + 12) + 'px';
+                container.appendChild(span);
+            }
+        }
+
+        // ========== START ==========
+        createFloatingHearts();
+
+        // Small delay          window.addEventListener('load', () => {
+            setTimeout(initSong, 500);
+        });
+    </script>
+
 </body>
 </html>
