@@ -214,7 +214,7 @@
         let music = document.getElementById('bgmusic');
         let isTransitioning = false; 
 
-        // 1. Setup Stars (Timm timm tare)
+        // 1. Setup Stars
         const starsContainer = document.getElementById('stars-container');
         for(let i=0; i<100; i++) { 
             let star = document.createElement('div');
@@ -228,7 +228,7 @@
             starsContainer.appendChild(star);
         }
 
-        // 2. Setup Jugnu (Flying Fireflies)
+        // 2. Setup Jugnu
         const firefliesContainer = document.getElementById('fireflies-container');
         for(let i=0; i<25; i++) {
             let ff = document.createElement('div');
@@ -242,7 +242,7 @@
             firefliesContainer.appendChild(ff);
         }
 
-        // 3. Setup Barish (Rain Drops)
+        // 3. Setup Barish
         const rainLayer = document.getElementById('rain-layer');
         for(let i=0; i<60; i++) {
             let drop = document.createElement('div');
@@ -253,7 +253,6 @@
             rainLayer.appendChild(drop);
         }
 
-        // Functions for page logic
         function startExperience() {
             music.volume = 0.4;
             music.play().catch((e)=>console.log("Audio waiting for interaction"));
@@ -267,16 +266,16 @@
             const current = document.querySelector('.section.active');
             const next = document.getElementById(nextId);
 
-            // Handle rain element display condition
+            // Fixed Style Error for Rain layer
             if(nextId === 'rain-page') {
-                rainLayer.style.style.display = 'block';
+                rainLayer.style.display = 'block';
             } else if(nextId !== 'solar-page' && nextId !== 'final-page' && nextId !== 'video-page') {
                 rainLayer.style.display = 'none'; 
             }
 
-            // Jab 7ve page (video-page) par jaye to background song band aur video chalu ho jaye
+            // Page 7: Video trigger handling
             if(nextId === 'video-page') {
-                music.pause(); // Background song turns off instantly
+                music.pause(); // Background song turns off
                 current.classList.remove('active');
                 next.classList.add('active');
                 
@@ -298,4 +297,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
