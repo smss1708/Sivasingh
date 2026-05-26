@@ -1,411 +1,300 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Good Night Bestie 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Night, Cutiee ✨</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap');
         
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-
-        body {
-            background: radial-gradient(ellipse at bottom, #0a0e2a 0%, #020010 100%);
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden; height: 100vh; width: 100vw;
-            color: #ffffff; user-select: none; touch-action: manipulation;
+        body, html {
+            margin: 0; padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #050515, #0b0b26, #11113a);
+            font-family: 'Playfair Display', serif;
+            touch-action: none;
+            color: #e2e8f0;
         }
-
-        /* === STARS GLITTERING === */
-        #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .star { 
-            position: absolute; background: white; border-radius: 50%; 
-            animation: realTwinkle var(--dur) infinite ease-in-out;
-            will-change: opacity, transform;
-        }
-        @keyframes realTwinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.6); }
-            50% { opacity: 1; transform: scale(1.3); }
-        }
-
-        /* === RAIN ANIMATION === */
-        #rain-container { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-        .raindrop {
-            position: absolute; top: -20px;
-            width: 2px; height: 20px;
-            background: linear-gradient(transparent, rgba(180, 200, 255, 0.3));
-            animation: fall var(--fall-dur) linear infinite;
-            animation-delay: var(--fall-delay);
-            left: var(--x-pos);
-        }
-        @keyframes fall {
-            0% { transform: translateY(-20px) rotate(15deg); opacity: 0.6; }
-            100% { transform: translateY(100vh) rotate(15deg); opacity: 0; }
-        }
-
-        /* === MOON === */
-        .moon {
-            position: fixed; top: 30px; right: 40px;
-            width: 90px; height: 90px;
-            background: radial-gradient(circle at 35% 35%, #fffde7, #f9e79f);
-            border-radius: 50%;
-            box-shadow: 0 0 60px rgba(255, 236, 150, 0.5), 0 0 120px rgba(255, 236, 150, 0.2);
-            z-index: 2;
-            animation: moonGlow 4s ease-in-out infinite alternate;
-        }
-        .moon::before {
-            content: ''; position: absolute;
-            width: 22px; height: 22px;
-            background: rgba(200, 180, 120, 0.3);
-            border-radius: 50%; top: 20px; left: 25px;
-        }
-        .moon::after {
-            content: ''; position: absolute;
-            width: 12px; height: 12px;
-            background: rgba(200, 180, 120, 0.2);
-            border-radius: 50%; top: 45px; left: 45px;
-        }
-        @keyframes moonGlow {
-            0% { box-shadow: 0 0 60px rgba(255, 236, 150, 0.5), 0 0 120px rgba(255, 236, 150, 0.2); }
-            100% { box-shadow: 0 0 80px rgba(255, 236, 150, 0.7), 0 0 160px rgba(255, 236, 150, 0.3); }
-        }
-
-        /* === SHOOTING STARS === */
-        .shooting-star {
-            position: fixed; width: 120px; height: 2px;
-            background: linear-gradient(to right, transparent, #fff, transparent);
-            z-index: 2; pointer-events: none;
-            animation: shoot 5s ease-in infinite;
-            top: 10%; left: 80%;
-            transform: rotate(-35deg);
-            opacity: 0;
-        }
-        .shooting-star:nth-child(2) { animation-delay: 3s; top: 20%; left: 70%; }
-        .shooting-star:nth-child(3) { animation-delay: 7s; top: 5%; left: 85%; }
-        @keyframes shoot {
-            0% { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 0; }
-            5% { opacity: 1; }
-            15% { transform: translateX(-200px) translateY(140px) rotate(-35deg); opacity: 1; }
-            20% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        .header-tag {
-            position: fixed; top: 15px; width: 100%; text-align: center;
-            z-index: 100; font-family: 'Dancing Script', cursive;
-            color: #ffe0b2; font-size: 1.6rem;
-            text-shadow: 0 0 15px rgba(255, 200, 100, 0.5);
-            letter-spacing: 2px;
-        }
-
-        .footer-tag {
-            position: fixed; bottom: 15px; width: 100%; text-align: center;
-            z-index: 100; font-family: 'Poppins', sans-serif;
-            color: rgba(255, 255, 255, 0.6); font-size: 0.85rem;
-            letter-spacing: 1.5px;
-        }
-
-        /* Slides */
-        .slide {
-            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+        
+        .premium-font { font-family: 'Dancing Script', cursive; font-weight: 700; }
+        .title-font { font-family: 'Cinzel Decorative', cursive; letter-spacing: 2px; }
+        
+        .section {
+            position: absolute; inset: 0;
+            display: none; opacity: 0;
             align-items: center; justify-content: center; flex-direction: column;
-            opacity: 0; z-index: 20; padding: 25px; text-align: center;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: scale(0.97);
+            padding: 20px; width: 100vw; height: 100vh;
         }
-        .slide.active { display: flex; opacity: 1; transform: scale(1); }
 
-        .cute-msg { 
-            font-family: 'Dancing Script', cursive; color: #ffffff; 
-            text-shadow: 0 0 20px #ff6eb4, 3px 3px 8px rgba(0,0,0,0.9); 
-            font-size: clamp(2.4rem, 9vw, 3.5rem); 
-            margin-top: 15px; font-weight: 700; line-height: 1.2;
-        }
-        .sub-text { 
-            color: #f0e6ff; font-weight: 400; font-size: 1.1rem; 
-            margin-top: 10px; max-width: 330px; 
-            text-shadow: 1px 1px 8px #000;
-            font-style: italic;
+        .section.active { display: flex; opacity: 1; }
+
+        .glass-premium {
+            background: rgba(15, 15, 35, 0.6);
+            backdrop-filter: blur(8px) saturate(140%);
+            -webkit-backdrop-filter: blur(8px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
         }
         
-        .gif-frame { 
-            width: 240px; height: 240px; border-radius: 30px; 
-            border: 3px solid #ff6eb4; 
-            box-shadow: 0 0 40px rgba(255, 110, 180, 0.4), inset 0 0 30px rgba(255, 110, 180, 0.1); 
-            object-fit: cover; background: #000;
+        .ultra-glow {
+            color: #fae8ff;
+            text-shadow: 0 0 10px rgba(232, 121, 249, 0.6), 0 0 20px rgba(168, 85, 247, 0.4);
         }
 
-        .glow-btn { 
-            background: linear-gradient(45deg, #e84393, #fd79a8); 
-            padding: 14px 35px; border-radius: 50px; font-weight: 700; 
-            box-shadow: 0 0 25px rgba(255, 110, 180, 0.4); 
-            cursor: pointer; border: none; color: white; font-size: 1.05rem;
-            margin-top: 20px; transition: 0.2s;
+        /* Twinkling Stars */
+        .bg-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle linear infinite alternate;
         }
-        .glow-btn:active { transform: scale(0.9); }
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
 
-        /* === Floating hearts (romantic mist) === */
-        .float-heart {
-            position: fixed; z-index: 3; pointer-events: none; font-size: 20px;
-            animation: floatUp 6s ease-in forwards;
-            opacity: 0;
+        /* Udte huye Jugnu (Fireflies) */
+        .firefly {
+            position: absolute; width: 6px; height: 6px;
+            background: #ccff00; border-radius: 50%;
+            box-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00;
+            animation: flyFirefly 8s infinite linear;
         }
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(0.5); opacity: 0.8; }
+        @keyframes flyFirefly {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
             50% { opacity: 1; }
-            100% { transform: translateY(-300px) scale(1.2); opacity: 0; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1); opacity: 0; }
         }
 
-        /* === Starry shimmer ring === */
-        .shimmer-ring {
-            width: 280px; height: 280px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 200, 150, 0.15);
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-            animation: ringPulse 3s ease-in-out infinite;
+        /* Barish (Rain drops) */
+        .rain-container { position: absolute; inset: 0; pointer-events: none; display: none; }
+        .drop {
+            position: absolute; width: 1px; height: 25px;
+            background: linear-gradient(transparent, rgba(174, 219, 255, 0.6));
+            animation: fallRain linear infinite;
         }
-        @keyframes ringPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 200, 150, 0.1); }
-            50% { box-shadow: 0 0 50px rgba(255, 200, 150, 0.3); }
+        @keyframes fallRain {
+            0% { transform: translateY(-50px); }
+            100% { transform: translateY(105vh); }
         }
-        .shimmer-ring .orbit-1 { position: absolute; width: 200px; height: 200px; border: 1px solid rgba(255,150,200,0.2); border-radius: 50%; animation: spin 8s linear infinite; }
-        .shimmer-ring .orbit-2 { position: absolute; width: 260px; height: 260px; border: 1px solid rgba(200,150,255,0.15); border-radius: 50%; animation: spin 12s linear infinite reverse; }
-        .shimmer-ring .orbit-1::after { content: '⭐'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
-        .shimmer-ring .orbit-2::after { content: '💫'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
-        .shimmer-ring .center-icon { font-size: 60px; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Progress Bar */
-        .hold-container { width: 280px; height: 18px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 25px; overflow: hidden; border: 2px solid rgba(255,200,150,0.3); }
-        #holdProgress { height: 100%; background: linear-gradient(90deg, #e84393, #fd79a8); width: 0%; transition: width 0.1s linear; }
+        /* Diya Flame Animation */
+        .flame {
+            width: 24px; height: 40px;
+            background: linear-gradient(to bottom, #fff, #ffda36, #ff7b00);
+            border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
+            animation: flicker 0.15s infinite alternate;
+            box-shadow: 0 0 20px #ff9d00, 0 0 40px #ff7b00;
+        }
+        @keyframes flicker {
+            0% { transform: scaleX(0.9) rotate(-2deg); }
+            100% { transform: scaleX(1.1) rotate(2deg); }
+        }
 
-        #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 1000; align-items: center; justify-content: center; }
-        video { width: 100%; height: 100%; object-fit: contain; }
+        /* Solar System Styles */
+        .orbit {
+            position: absolute; border: 1px dashed rgba(255,255,255,0.08); border-radius: 50%;
+            animation: rotateOrbit linear infinite;
+        }
+        @keyframes rotateOrbit {
+            100% { transform: rotate(360deg); }
+        }
+        .planet {
+            position: absolute; border-radius: 50%; top: 0; left: 50%; transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body>
 
-    <div class="header-tag">✨ Good Night [Dost Ka Name] ✨</div>
-    <div class="footer-tag">Made with ❤️ by sivasingh</div>
-    
-    <audio id="bgMusic" loop src="tere-liye.mp3" preload="auto"></audio>
-    
-    <div id="stars-container"></div>
-    
-    <!-- Rain Container -->
-    <div id="rain-container"></div>
-
-    <!-- Moon -->
-    <div class="moon"></div>
-
-    <!-- Shooting Stars -->
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-
-    <!-- === SLIDE 1 === -->
-    <div id="slide1" class="slide active">
-        <img src="gif1.gif" class="gif-frame">
-        <h1 class="cute-msg">🌙 Shubh Ratri [Dost Ka Name]</h1>
-        <p class="sub-text">Chaand aur taare bhi aaj hamari dosti ki chamak dekh rahe hain...</p>
-        <button onclick="startApp()" class="glow-btn">Dosti Ki Ek Baat Suno ✨</button>
+    <div class="fixed top-4 left-0 w-full text-center z-[100] text-gray-500/50 text-xs font-mono tracking-widest pointer-events-none">
+        sweet dreams animation ✨
     </div>
 
-    <!-- === SLIDE 2 === -->
-    <div id="slide2" class="slide">
-        <img src="gif2.gif" class="gif-frame">
-        <h1 class="cute-msg">Sukoon Milta Hai Tumse Baat Karke</h1>
-        <p class="sub-text">Din bhar ki thakan minto mein gayab ho jati hai jab tumse baatein hoti hain, tum sachi bohot khoobsurat insaan ho 🌟</p>
-        <button onclick="next()" class="glow-btn">Baatein Aur Aage Badhein... 😊</button>
-    </div>
+    <audio id="bgmusic" loop><source src="tere-liye.mp3" type="audio/mpeg"></audio>
 
-    <!-- === SLIDE 3 === -->
-    <div id="slide3" class="slide">
-        <img src="gif3.gif" class="gif-frame">
-        <h1 class="cute-msg">Khusi Hoti Hai Jab Tum Hasti Ho</h1>
-        <p class="sub-text">Jaise taare raat ko roshan karte hain, waise hi tumhari dosti meri life ko hamesha bright rakhti hai ✨</p>
-        <button onclick="next()" class="glow-btn">Dosti Ki Geahrayi 💗</button>
-    </div>
+    <div class="bg-particles" id="stars-container"></div>
+    <div class="bg-particles" id="fireflies-container"></div>
+    <div class="rain-container" id="rain-layer"></div>
 
-    <!-- === SLIDE 4 === -->
-    <div id="slide4" class="slide">
-        <div class="shimmer-ring">
-            <div class="orbit-1"></div>
-            <div class="orbit-2"></div>
-            <span class="center-icon">🌙</span>
+    <section id="intro" class="section active" style="z-index: 10;">
+        <div class="text-center z-20">
+            <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-6 title-font">Good Night, Cutiee 🌙</h1>
+            <p class="text-2xl premium-font text-purple-300 mb-14">A beautiful cosmic night is waiting for you...</p>
+            <button onclick="startExperience()" class="bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-600 px-12 py-5 rounded-full text-2xl font-bold hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-xl text-white border border-purple-400/30">
+                Enter The Night Sky ✨
+            </button>
         </div>
-        <h1 class="cute-msg mt-8">Sabse Khas Dost Ho</h1>
-        <p class="sub-text">Chaand, taare, aur ye haseen mausam — sab fike hain tumhari is pyaari si smile ke aage 😊</p>
-        <button onclick="next()" class="glow-btn">Ek Pyaara Sa Ehsaas... 🥺</button>
-    </div>
+    </section>
 
-    <!-- === SLIDE 5: HOLD TO FEEL === -->
-    <div id="slide5" class="slide">
-        <div class="text-7xl mb-4 transition-transform duration-300" id="pulseHeart">💖</div>
-        <h1 class="text-2xl font-bold">Hamari Dosti Kitni Special Hai?</h1>
-        <p class="sub-text">Is button ko daba kar rakho aur dosti ko feel karo...</p>
-        <div class="hold-container"><div id="holdProgress"></div></div>
-        <button id="holdBtn" class="glow-btn select-none">💞 DABAAKE RAKHO 💞</button>
-    </div>
-
-    <!-- === SLIDE 6 === -->
-    <div id="slide6" class="slide">
-        <img src="gif4.gif" class="gif-frame">
-        <h1 class="cute-msg">Barish Ki Boondein Aur Pyaari Dosti</h1>
-        <p class="sub-text">Jaise barish dharti ko sukoon deti hai, waise hi tumhari dosti har mushkil ko aasan bana deti hai 🌧️💕</p>
-        <button onclick="next()" class="glow-btn">Chalo Aage Badhein ✨</button>
-    </div>
-
-    <!-- === SLIDE 7 === -->
-    <div id="slide7" class="slide">
-        <img src="gif5.gif" class="gif-frame">
-        <h1 class="cute-msg">Hamesha Aise Hi Muskurate Rehna</h1>
-        <p class="sub-text">Tumhari muskurahat sachi bohot keemti hai... Isko kabhi khone mat dena, please hamesha khush raho! 😭💗</p>
-        <button onclick="next()" class="glow-btn">Bas Thoda Sa Aur... 😊</button>
-    </div>
-
-    <!-- === SLIDE 8 === -->
-    <div id="slide8" class="slide">
-        <img src="gif6.gif" class="gif-frame">
-        <h1 class="cute-msg">Dekho aaj mausam bhi kitna romantic hai so me bus yahi kahunga</h1>
-        <p class="sub-text">You are mine... I am lucky to have you ⭐😌</p>
-        <button onclick="next()" class="glow-btn">Aakhri Baat ✨</button>
-    </div>
-
-    <!-- === SLIDE 9 === -->
-    <div id="slide9" class="slide">
-        <div class="text-8xl mb-2" style="animation: floatUp 2s ease-in-out infinite alternate;">🌙</div>
-        <h1 class="cute-msg">Chalo promise karein ham ik dusre ko kabhi nhi bhulenge?</h1>
-        <p class="sub-text">Aasmaan gawah hai, hamari dosti hamesha aisi hi strong rahegi 🥹💫</p>
-        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
-            <button onclick="next()" class="glow-btn">Haan! Bilkul 😍</button>
-            <button id="noBtn" onclick="trapNo()" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">Nahi 🥺</button>
+    <section id="diya-page" class="section" style="z-index: 10;">
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4">
+            <h2 class="text-4xl premium-font ultra-glow mb-6">Roshan Raat Aur Sukoon 🕯️</h2>
+            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
+                "Jaise yeh diya dheere se jal kar andhere ko door karta hai, waise hi aapki life ka har stress is raat ke andhere me gayab ho jaye."
+            </p>
+            <div class="flex flex-col items-center justify-center my-6 relative h-24">
+                <div class="flame mb-1"></div>
+                <div class="w-20 h-10 bg-amber-700 rounded-b-full border-t-4 border-amber-500"></div>
+            </div>
+            <button onclick="nextPage('moon-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+                Look up at the Moon 🌙
+            </button>
         </div>
-    </div>
+    </section>
 
-    <!-- === SLIDE 10 === -->
-    <div id="slide10" class="slide">
-        <img src="gif7.gif" class="gif-frame">
-        <h1 class="cute-msg">Good Night My Baby! 😭💗</h1>
-        <p class="sub-text">Wada raha — aaj sapne me 🌚jarur milenge... 💕</p>
-        <button onclick="playSurprise()" class="glow-btn animate-bounce">EK AAKHRI BAAT 🎁✨</button>
-    </div>
+    <section id="moon-page" class="section" style="z-index: 10;">
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4 relative">
+            <div class="w-24 h-24 bg-yellow-100 rounded-full shadow-[0_0_30px_rgba(254,240,138,0.7)] mx-auto mb-6 relative overflow-hidden">
+                <div class="absolute -top-2 -left-2 w-full h-full bg-slate-900/40 rounded-full"></div>
+            </div>
+            <h2 class="text-4xl premium-font ultra-glow mb-6">Chanda Aur Chandi Ka Pehra ✨</h2>
+            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
+                "Yeh khubsoorat timtimate tare aur yeh chand aapko lori suna rahe hain. Inka kehna hai ki ab aankhein band karo aur khwabon ki duniya me chalo."
+            </p>
+            <button onclick="nextPage('rain-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+                Feel the Gentle Rain 🌧️
+            </button>
+        </div>
+    </section>
 
-    <!-- === VIDEO LAYER === -->
-    <div id="videoLayer">
-        <video id="vPlayer" playsinline src="video1.mp4"></video>
-    </div>
+    <section id="rain-page" class="section" style="z-index: 10;">
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4">
+            <h2 class="text-4xl premium-font ultra-glow mb-6">Barish Ki Thandi Boondein 🌧️</h2>
+            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
+                "Suno... yeh barish ki boondein aapke liye ek soft music baja rahi hain, taaki aap sab bhool kar ek gehri aur pyaari neend so sako."
+            </p>
+            <button onclick="nextPage('solar-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+                Explore the Solar System 🪐
+            </button>
+        </div>
+    </section>
+
+    <section id="solar-page" class="section" style="z-index: 10;">
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4 mb-2">
+            <h2 class="text-4xl premium-font ultra-glow mb-4">The Whole Universe Loves You 🪐</h2>
+            <p class="text-lg leading-relaxed text-indigo-100">
+                "Saara solar system, saare grah aur galaxy milkar aapke liye ek shant raat ki dua kar rahe hain."
+            </p>
+        </div>
+        <div class="relative w-80 h-80 flex items-center justify-center z-20 my-2">
+            <div class="w-12 h-12 bg-orange-500 rounded-full shadow-[0_0_20px_#f97316]"></div>
+            <div class="orbit w-28 h-28" style="animation-duration: 4s;">
+                <div class="planet w-3 h-3 bg-blue-400"></div>
+            </div>
+            <div class="orbit w-44 h-44" style="animation-duration: 7s;">
+                <div class="planet w-4 h-4 bg-purple-400"></div>
+            </div>
+            <div class="orbit w-64 h-64" style="animation-duration: 12s;">
+                <div class="planet w-5 h-5 bg-amber-500"></div>
+            </div>
+        </div>
+        <button onclick="nextPage('final-page')" class="z-20 mt-4 bg-gradient-to-r from-pink-600 to-purple-600 px-10 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-xl">
+            Go to Next Page 💖
+        </button>
+    </section>
+
+    <section id="final-page" class="section" style="z-index: 10;">
+        <div class="text-center z-20 max-w-lg mx-auto glass-premium p-10 mx-4">
+            <h2 class="text-5xl md:text-6xl premium-font ultra-glow mb-6">Shubh Ratri, Cutiee! 🧸💖</h2>
+            <p class="text-2xl premium-font text-pink-300 mb-8">Aapke liye ek aakhri magical surprise bacha hai...</p>
+            <button onclick="nextPage('video-page')" class="bg-gradient-to-r from-green-500 to-teal-500 px-12 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-2xl">
+                See Magical Video ✨
+            </button>
+        </div>
+    </section>
+
+    <section id="video-page" class="section bg-black" style="z-index: 50; padding: 0;">
+        <video id="final-video" src="video1.mp4" playsinline preload="auto" class="w-full h-full object-cover"></video>
+    </section>
 
     <script>
-        let step = 1;
-        const music = document.getElementById('bgMusic');
+        let music = document.getElementById('bgmusic');
+        let isTransitioning = false; 
 
-        // === STARS GENERATION ===
-        const starContainer = document.getElementById('stars-container');
-        const frag = document.createDocumentFragment();
-        for(let i=0; i<150; i++) {
-            const s = document.createElement('div');
-            s.className = 'star';
-            const size = Math.random() * 2.5 + 1 + 'px';
-            s.style.width = size; s.style.height = size;
-            s.style.left = Math.random() * 100 + 'vw';
-            s.style.top = Math.random() * 100 + 'vh';
-            s.style.setProperty('--dur', (Math.random() * 3 + 1.5) + 's');
-            if(i % 7 === 0) s.style.background = '#ffe082';
-            if(i % 11 === 0) s.style.background = '#ffb3d9';
-            frag.appendChild(s);
-        }
-        starContainer.appendChild(frag);
-
-        // === RAIN GENERATION ===
-        const rainContainer = document.getElementById('rain-container');
-        for(let i=0; i<80; i++) {
-            const drop = document.createElement('div');
-            drop.className = 'raindrop';
-            drop.style.setProperty('--x-pos', Math.random() * 100 + 'vw');
-            drop.style.setProperty('--fall-dur', (Math.random() * 0.8 + 0.6) + 's');
-            drop.style.setProperty('--fall-delay', (Math.random() * 3) + 's');
-            drop.style.height = (Math.random() * 15 + 10) + 'px';
-            drop.style.width = (Math.random() * 1.5 + 1) + 'px';
-            rainContainer.appendChild(drop);
+        // 1. Setup Stars (Timm timm tare)
+        const starsContainer = document.getElementById('stars-container');
+        for(let i=0; i<100; i++) { 
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = `${Math.random()*3}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random()*100}vw`;
+            star.style.top = `${Math.random()*100}vh`;
+            star.style.animationDuration = `${Math.random()*2 + 1}s`;
+            star.style.animationDelay = `${Math.random()*2}s`;
+            starsContainer.appendChild(star);
         }
 
-        // === FLOATING HEARTS ===
-        function spawnHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'float-heart';
-            const emojis = ['💗', '💖', '💕', '✨', '🌙', '💫', '⭐'];
-            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-            heart.style.left = Math.random() * 90 + 'vw';
-            heart.style.bottom = '10px';
-            heart.style.fontSize = (Math.random() * 16 + 14) + 'px';
-            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 7000);
-        }
-        setInterval(spawnHeart, 1200);
-
-        function startApp() { 
-            music.play().catch(e => console.log(e)); 
-            next(); 
+        // 2. Setup Jugnu (Flying Fireflies)
+        const firefliesContainer = document.getElementById('fireflies-container');
+        for(let i=0; i<25; i++) {
+            let ff = document.createElement('div');
+            ff.className = 'firefly';
+            ff.style.left = `${Math.random()*100}vw`;
+            ff.style.top = `${Math.random()*100}vh`;
+            ff.style.setProperty('--mx', `${(Math.random() - 0.5) * 300}px`);
+            ff.style.setProperty('--my', `${(Math.random() - 0.5) * 300}px`);
+            ff.style.animationDuration = `${Math.random()*5 + 5}s`;
+            ff.style.animationDelay = `${Math.random()*4}s`;
+            firefliesContainer.appendChild(ff);
         }
 
-        function next() {
-            const current = document.getElementById('slide' + step);
-            const nextS = document.getElementById('slide' + (step + 1));
-            if(current) {
+        // 3. Setup Barish (Rain Drops)
+        const rainLayer = document.getElementById('rain-layer');
+        for(let i=0; i<60; i++) {
+            let drop = document.createElement('div');
+            drop.className = 'drop';
+            drop.style.left = `${Math.random()*100}vw`;
+            drop.style.animationDuration = `${Math.random()*1 + 0.8}s`;
+            drop.style.animationDelay = `${Math.random()*2}s`;
+            rainLayer.appendChild(drop);
+        }
+
+        // Functions for page logic
+        function startExperience() {
+            music.volume = 0.4;
+            music.play().catch((e)=>console.log("Audio waiting for interaction"));
+            nextPage('diya-page');
+        }
+
+        function nextPage(nextId) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            const current = document.querySelector('.section.active');
+            const next = document.getElementById(nextId);
+
+            // Handle rain element display condition
+            if(nextId === 'rain-page') {
+                rainLayer.style.style.display = 'block';
+            } else if(nextId !== 'solar-page' && nextId !== 'final-page' && nextId !== 'video-page') {
+                rainLayer.style.display = 'none'; 
+            }
+
+            // Jab 7ve page (video-page) par jaye to background song band aur video chalu ho jaye
+            if(nextId === 'video-page') {
+                music.pause(); // Background song turns off instantly
                 current.classList.remove('active');
-                setTimeout(() => { current.style.display = 'none'; }, 500);
+                next.classList.add('active');
+                
+                const video = document.getElementById('final-video');
+                gsap.fromTo(next, {opacity: 0}, {opacity: 1, duration: 0.5, onComplete: () => {
+                    video.play().catch((e) => console.log("Video Auto Play Error:", e));
+                    isTransitioning = false;
+                }});
+                return;
             }
-            if(nextS) {
-                step++;
-                nextS.style.display = 'flex';
-                void nextS.offsetWidth;
-                nextS.classList.add('active');
-            }
-        }
 
-        function trapNo() {
-            const container = document.getElementById('btnContainer');
-            document.getElementById('noBtn').style.display = 'none';
-            for(let i=0; i<5; i++) {
-                const b = document.createElement('button');
-                b.className = "glow-btn"; b.innerHTML = "Haan! Bilkul 💖";
-                b.onclick = next; container.appendChild(b);
-            }
-        }
-
-        // === HOLD LOGIC ===
-        let hVal = 0, hInt;
-        const hBtn = document.getElementById('holdBtn'), 
-              hProg = document.getElementById('holdProgress'), 
-              pHeart = document.getElementById('pulseHeart');
-        
-        const startH = (e) => { 
-            e.preventDefault(); 
-            pHeart.style.transform = 'scale(1.6)';
-            hInt = setInterval(() => { 
-                hVal += 2.5; 
-                hProg.style.width = hVal + '%'; 
-                if(hVal >= 100) { clearInterval(hInt); next(); } 
-            }, 30); 
-        };
-        const endH = () => { clearInterval(hInt); hVal = 0; hProg.style.width = '0%'; pHeart.style.transform = 'scale(1)'; };
-        
-        hBtn.addEventListener('touchstart', startH);
-        hBtn.addEventListener('mousedown', startH);
-        window.addEventListener('touchend', endH);
-        window.addEventListener('mouseup', endH);
-
-        function playSurprise() {
-            music.pause();
-            const layer = document.getElementById('videoLayer');
-            layer.style.display = 'flex';
-            const v = document.getElementById('vPlayer');
-            v.play();
-            v.onended = () => location.reload();
+            gsap.to(current, {opacity:0, duration:0.5, ease:"power2.inOut", onComplete:()=>{
+                current.classList.remove('active');
+                next.classList.add('active');
+                gsap.fromTo(next, {opacity:0, scale:0.95}, {opacity:1, scale:1, duration:0.6, ease:"back.out(1.1)", onComplete: () => {
+                    isTransitioning = false;
+                }});
+            }});
         }
     </script>
 </body>
