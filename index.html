@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Night, Cutiee ✨</title>
+    <title>Good Night, Cutiee ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -13,10 +13,11 @@
         body, html {
             margin: 0; padding: 0;
             overflow: hidden;
-            background: linear-gradient(to bottom, #050515, #0b0b26, #11113a);
+            /* Romantic Cosmic Gradient Blend */
+            background: linear-gradient(to bottom, #030212, #0a0524, #18052b, #050d24);
             font-family: 'Playfair Display', serif;
             touch-action: none;
-            color: #e2e8f0;
+            color: #fce7f3;
         }
         
         .premium-font { font-family: 'Dancing Script', cursive; font-weight: 700; }
@@ -32,48 +33,50 @@
         .section.active { display: flex; opacity: 1; }
 
         .glass-premium {
-            background: rgba(15, 15, 35, 0.6);
-            backdrop-filter: blur(8px) saturate(140%);
-            -webkit-backdrop-filter: blur(8px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            border-radius: 24px;
+            background: rgba(25, 10, 40, 0.45);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 12px 40px rgba(244, 63, 94, 0.15);
+            border-radius: 28px;
         }
         
         .ultra-glow {
-            color: #fae8ff;
-            text-shadow: 0 0 10px rgba(232, 121, 249, 0.6), 0 0 20px rgba(168, 85, 247, 0.4);
+            color: #fdf2f8;
+            text-shadow: 0 0 12px rgba(244, 63, 94, 0.8), 0 0 24px rgba(192, 38, 211, 0.5);
         }
 
-        /* Twinkling Stars */
+        /* Romantic Twinkling Stars */
         .bg-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
         .star {
             position: absolute; background: white; border-radius: 50%;
+            box-shadow: 0 0 8px #fff;
             animation: twinkle linear infinite alternate;
         }
         @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); }
+            0% { opacity: 0.1; transform: scale(0.6); }
+            100% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* Udte huye Jugnu (Fireflies) */
+        /* Romantic Magical Fireflies (Jugnu) */
         .firefly {
-            position: absolute; width: 6px; height: 6px;
-            background: #ccff00; border-radius: 50%;
-            box-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00;
-            animation: flyFirefly 8s infinite linear;
+            position: absolute; width: 7px; height: 7px;
+            background: #eab308; border-radius: 50%;
+            box-shadow: 0 0 12px #eab308, 0 0 25px #ec4899;
+            animation: flyFirefly 9s infinite linear;
         }
         @keyframes flyFirefly {
-            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translate(var(--mx), var(--my)) scale(1); opacity: 0; }
+            0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+            30% { opacity: 1; }
+            70% { opacity: 0.8; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1.1); opacity: 0; }
         }
 
-        /* Barish (Rain drops) */
+        /* Romantic Soft Rain Drops */
         .rain-container { position: absolute; inset: 0; pointer-events: none; display: none; }
         .drop {
-            position: absolute; width: 1px; height: 25px;
-            background: linear-gradient(transparent, rgba(174, 219, 255, 0.6));
+            position: absolute; width: 1.5px; height: 35px;
+            background: linear-gradient(transparent, rgba(244, 63, 94, 0.4), rgba(255, 255, 255, 0.6));
             animation: fallRain linear infinite;
         }
         @keyframes fallRain {
@@ -83,20 +86,20 @@
 
         /* Diya Flame Animation */
         .flame {
-            width: 24px; height: 40px;
-            background: linear-gradient(to bottom, #fff, #ffda36, #ff7b00);
+            width: 26px; height: 42px;
+            background: linear-gradient(to bottom, #fff, #ffe57f, #ff5722);
             border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
-            animation: flicker 0.15s infinite alternate;
-            box-shadow: 0 0 20px #ff9d00, 0 0 40px #ff7b00;
+            animation: flicker 0.12s infinite alternate;
+            box-shadow: 0 0 25px #ff9800, 0 0 50px #ff5722, 0 0 75px rgba(244, 63, 94, 0.5);
         }
         @keyframes flicker {
-            0% { transform: scaleX(0.9) rotate(-2deg); }
-            100% { transform: scaleX(1.1) rotate(2deg); }
+            0% { transform: scaleX(0.85) rotate(-3deg); }
+            100% { transform: scaleX(1.15) rotate(3deg); }
         }
 
-        /* Solar System Styles */
+        /* Romantic Solar System Styles */
         .orbit {
-            position: absolute; border: 1px dashed rgba(255,255,255,0.08); border-radius: 50%;
+            position: absolute; border: 1px dashed rgba(244, 63, 94, 0.2); border-radius: 50%;
             animation: rotateOrbit linear infinite;
         }
         @keyframes rotateOrbit {
@@ -104,13 +107,14 @@
         }
         .planet {
             position: absolute; border-radius: 50%; top: 0; left: 50%; transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
     </style>
 </head>
 <body>
 
-    <div class="fixed top-4 left-0 w-full text-center z-[100] text-gray-500/50 text-xs font-mono tracking-widest pointer-events-none">
-        sweet dreams animation ✨
+    <div class="fixed top-4 left-0 w-full text-center z-[100] text-rose-400/30 text-xs font-mono tracking-widest pointer-events-none">
+        forever yours • sweet dreams animation ❤️
     </div>
 
     <audio id="bgmusic" loop><source src="tere-liye.mp3" type="audio/mpeg"></audio>
@@ -120,53 +124,53 @@
     <div class="rain-container" id="rain-layer"></div>
 
     <section id="intro" class="section active" style="z-index: 10;">
-        <div class="text-center z-20">
-            <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-6 title-font">Good Night, Cutiee 🌙</h1>
-            <p class="text-2xl premium-font text-purple-300 mb-14">A beautiful cosmic night is waiting for you...</p>
-            <button onclick="startExperience()" class="bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-600 px-12 py-5 rounded-full text-2xl font-bold hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-xl text-white border border-purple-400/30">
+        <div class="text-center z-20 px-4">
+            <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-6 title-font">Good Night, Cutiee ❤️</h1>
+            <p class="text-2xl premium-font text-pink-300 mb-14">A beautiful, romantic night is waiting just for you...</p>
+            <button onclick="startExperience()" class="bg-gradient-to-br from-rose-600 via-purple-600 to-indigo-700 px-14 py-5 rounded-full text-2xl font-bold hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-xl shadow-rose-900/40 text-white border border-rose-400/40">
                 Enter The Night Sky ✨
             </button>
         </div>
     </section>
 
     <section id="diya-page" class="section" style="z-index: 10;">
-        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4">
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-10 mx-4">
             <h2 class="text-4xl premium-font ultra-glow mb-6">Roshan Raat Aur Sukoon 🕯️</h2>
-            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
+            <p class="text-xl mb-10 leading-relaxed text-rose-100/90">
                 "Jaise yeh diya dheere se jal kar andhere ko door karta hai, waise hi aapki life ka har stress is raat ke andhere me gayab ho jaye."
             </p>
-            <div class="flex flex-col items-center justify-center my-6 relative h-24">
+            <div class="flex flex-col items-center justify-center my-6 relative h-26">
                 <div class="flame mb-1"></div>
-                <div class="w-20 h-10 bg-amber-700 rounded-b-full border-t-4 border-amber-500"></div>
+                <div class="w-22 h-11 bg-amber-800 rounded-b-full border-t-4 border-amber-500 shadow-lg"></div>
             </div>
-            <button onclick="nextPage('moon-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+            <button onclick="nextPage('moon-page')" class="bg-gradient-to-r from-rose-500 to-purple-600 px-10 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition shadow-lg">
                 Look up at the Moon 🌙
             </button>
         </div>
     </section>
 
     <section id="moon-page" class="section" style="z-index: 10;">
-        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4 relative">
-            <div class="w-24 h-24 bg-yellow-100 rounded-full shadow-[0_0_30px_rgba(254,240,138,0.7)] mx-auto mb-6 relative overflow-hidden">
-                <div class="absolute -top-2 -left-2 w-full h-full bg-slate-900/40 rounded-full"></div>
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-10 mx-4 relative">
+            <div class="w-24 h-24 bg-pink-100 rounded-full shadow-[0_0_35px_rgba(244,114,182,0.8)] mx-auto mb-6 relative overflow-hidden">
+                <div class="absolute -top-2 -left-2 w-full h-full bg-indigo-950/40 rounded-full"></div>
             </div>
-            <h2 class="text-4xl premium-font ultra-glow mb-6">Chanda Aur Chandi Ka Pehra ✨</h2>
-            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
-                "Yeh khubsoorat timtimate tare aur yeh chand aapko lori suna rahe hain. Inka kehna hai ki ab aankhein band karo aur khwabon ki duniya me chalo."
+            <h2 class="text-4xl premium-font ultra-glow mb-6">The Moon & Our Stars ✨</h2>
+            <p class="text-xl mb-10 leading-relaxed text-pink-100">
+                "Do you see how beautifully the stars are twinkling tonight? They are rewriting my love story for you in the sky. Close your eyes, let the moon guard your sweetest dreams."
             </p>
-            <button onclick="nextPage('rain-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+            <button onclick="nextPage('rain-page')" class="bg-gradient-to-r from-rose-500 to-purple-600 px-10 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition shadow-lg">
                 Feel the Gentle Rain 🌧️
             </button>
         </div>
     </section>
 
     <section id="rain-page" class="section" style="z-index: 10;">
-        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4">
-            <h2 class="text-4xl premium-font ultra-glow mb-6">Barish Ki Thandi Boondein 🌧️</h2>
-            <p class="text-xl mb-10 leading-relaxed text-indigo-100">
-                "Suno... yeh barish ki boondein aapke liye ek soft music baja rahi hain, taaki aap sab bhool kar ek gehri aur pyaari neend so sako."
+        <div class="text-center z-20 max-w-xl mx-auto glass-premium p-10 mx-4">
+            <h2 class="text-4xl premium-font ultra-glow mb-6">Rhythm of the Falling Rain 🌧️</h2>
+            <p class="text-xl mb-10 leading-relaxed text-pink-100">
+                "Listen closely... every single drop of rain falling tonight is playing a gentle lullaby just for you. Let it wash away your worries and whisper how deeply you are loved."
             </p>
-            <button onclick="nextPage('solar-page')" class="bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition">
+            <button onclick="nextPage('solar-page')" class="bg-gradient-to-r from-rose-500 to-purple-600 px-10 py-3 rounded-full text-lg font-bold text-white hover:scale-105 transition shadow-lg">
                 Explore the Solar System 🪐
             </button>
         </div>
@@ -174,34 +178,34 @@
 
     <section id="solar-page" class="section" style="z-index: 10;">
         <div class="text-center z-20 max-w-xl mx-auto glass-premium p-8 mx-4 mb-2">
-            <h2 class="text-4xl premium-font ultra-glow mb-4">The Whole Universe Loves You 🪐</h2>
-            <p class="text-lg leading-relaxed text-indigo-100">
-                "Saara solar system, saare grah aur galaxy milkar aapke liye ek shant raat ki dua kar rahe hain."
+            <h2 class="text-4xl premium-font ultra-glow mb-4">My Whole Universe Resolves Around You 🪐</h2>
+            <p class="text-lg leading-relaxed text-pink-100">
+                "Even the planets, galaxies, and the cosmic expanse hold their breath tonight, just to wish you the most peaceful sleep in the universe."
             </p>
         </div>
         <div class="relative w-80 h-80 flex items-center justify-center z-20 my-2">
-            <div class="w-12 h-12 bg-orange-500 rounded-full shadow-[0_0_20px_#f97316]"></div>
+            <div class="w-14 h-14 bg-gradient-to-r from-amber-400 to-rose-500 rounded-full shadow-[0_0_25px_#f43f5e]"></div>
             <div class="orbit w-28 h-28" style="animation-duration: 4s;">
-                <div class="planet w-3 h-3 bg-blue-400"></div>
+                <div class="planet w-3 h-3 bg-pink-400 shadow-[0_0_8px_#f472b6]"></div>
             </div>
-            <div class="orbit w-44 h-44" style="animation-duration: 7s;">
-                <div class="planet w-4 h-4 bg-purple-400"></div>
+            <div class="orbit w-46 h-46" style="animation-duration: 8s;">
+                <div class="planet w-4 h-4 bg-purple-400 shadow-[0_0_8px_#c084fc]"></div>
             </div>
-            <div class="orbit w-64 h-64" style="animation-duration: 12s;">
-                <div class="planet w-5 h-5 bg-amber-500"></div>
+            <div class="orbit w-66 h-66" style="animation-duration: 13s;">
+                <div class="planet w-5 h-5 bg-rose-500 shadow-[0_0_10px_#f43f5e]"></div>
             </div>
         </div>
-        <button onclick="nextPage('final-page')" class="z-20 mt-4 bg-gradient-to-r from-pink-600 to-purple-600 px-10 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-xl">
-            Go to Next Page 💖
+        <button onclick="nextPage('final-page')" class="z-20 mt-4 bg-gradient-to-r from-pink-600 to-purple-600 px-12 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-xl shadow-purple-900/30">
+            Go to Next Page 💞
         </button>
     </section>
 
     <section id="final-page" class="section" style="z-index: 10;">
-        <div class="text-center z-20 max-w-lg mx-auto glass-premium p-10 mx-4">
-            <h2 class="text-5xl md:text-6xl premium-font ultra-glow mb-6">Shubh Ratri, Cutiee! 🧸💖</h2>
-            <p class="text-2xl premium-font text-pink-300 mb-8">Aapke liye ek aakhri magical surprise bacha hai...</p>
-            <button onclick="nextPage('video-page')" class="bg-gradient-to-r from-green-500 to-teal-500 px-12 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-2xl">
-                See Magical Video ✨
+        <div class="text-center z-20 max-w-lg mx-auto glass-premium p-12 mx-4">
+            <h2 class="text-5xl md:text-6xl premium-font ultra-glow mb-6">Sweet Dreams, My Cutiee! 🧸💖</h2>
+            <p class="text-2xl premium-font text-rose-300 mb-8">Now close those beautiful eyes and drift away...</p>
+            <button onclick="nextPage('video-page')" class="bg-gradient-to-r from-emerald-500 to-teal-500 px-14 py-4 rounded-full text-xl font-bold text-white hover:scale-105 transition shadow-2xl">
+                See Your Last Surprise ✨
             </button>
         </div>
     </section>
@@ -214,48 +218,53 @@
         let music = document.getElementById('bgmusic');
         let isTransitioning = false; 
 
-        // 1. Setup Stars
+        // 1. Romantic Dense Twinkling Stars
         const starsContainer = document.getElementById('stars-container');
-        for(let i=0; i<100; i++) { 
+        for(let i=0; i<110; i++) { 
             let star = document.createElement('div');
             star.className = 'star';
-            star.style.width = `${Math.random()*3}px`;
+            star.style.width = `${Math.random()*3 + 0.5}px`;
             star.style.height = star.style.width;
             star.style.left = `${Math.random()*100}vw`;
             star.style.top = `${Math.random()*100}vh`;
-            star.style.animationDuration = `${Math.random()*2 + 1}s`;
+            star.style.animationDuration = `${Math.random()*1.8 + 0.8}s`;
             star.style.animationDelay = `${Math.random()*2}s`;
             starsContainer.appendChild(star);
         }
 
-        // 2. Setup Jugnu
+        // 2. High Glow Fireflies (Jugnu)
         const firefliesContainer = document.getElementById('fireflies-container');
-        for(let i=0; i<25; i++) {
+        for(let i=0; i<28; i++) {
             let ff = document.createElement('div');
             ff.className = 'firefly';
             ff.style.left = `${Math.random()*100}vw`;
             ff.style.top = `${Math.random()*100}vh`;
-            ff.style.setProperty('--mx', `${(Math.random() - 0.5) * 300}px`);
-            ff.style.setProperty('--my', `${(Math.random() - 0.5) * 300}px`);
-            ff.style.animationDuration = `${Math.random()*5 + 5}s`;
-            ff.style.animationDelay = `${Math.random()*4}s`;
+            ff.style.setProperty('--mx', `${(Math.random() - 0.5) * 350}px`);
+            ff.style.setProperty('--my', `${(Math.random() - 0.5) * 350}px`);
+            ff.style.animationDuration = `${Math.random()*6 + 6}s`;
+            ff.style.animationDelay = `${Math.random()*3}s`;
             firefliesContainer.appendChild(ff);
         }
 
-        // 3. Setup Barish
+        // 3. Falling Rain Layers
         const rainLayer = document.getElementById('rain-layer');
-        for(let i=0; i<60; i++) {
+        for(let i=0; i<70; i++) {
             let drop = document.createElement('div');
             drop.className = 'drop';
             drop.style.left = `${Math.random()*100}vw`;
-            drop.style.animationDuration = `${Math.random()*1 + 0.8}s`;
-            drop.style.animationDelay = `${Math.random()*2}s`;
+            drop.style.animationDuration = `${Math.random()*1 + 0.7}s`;
+            drop.style.animationDelay = `${Math.random()*1.5}s`;
             rainLayer.appendChild(drop);
         }
 
+        // First Tap Trigger - Music starts instantly on first interaction
         function startExperience() {
-            music.volume = 0.4;
-            music.play().catch((e)=>console.log("Audio waiting for interaction"));
+            music.volume = 0.5;
+            music.play().then(() => {
+                console.log("Music started successfully!");
+            }).catch((e) => {
+                console.log("Audio play gesture bypass logged:", e);
+            });
             nextPage('diya-page');
         }
 
@@ -266,22 +275,22 @@
             const current = document.querySelector('.section.active');
             const next = document.getElementById(nextId);
 
-            // Fixed Style Error for Rain layer
+            // Activate soft rain layout on Page 4
             if(nextId === 'rain-page') {
                 rainLayer.style.display = 'block';
             } else if(nextId !== 'solar-page' && nextId !== 'final-page' && nextId !== 'video-page') {
                 rainLayer.style.display = 'none'; 
             }
 
-            // Page 7: Video trigger handling
+            // Page 7: Deep Video Integration without clutter
             if(nextId === 'video-page') {
-                music.pause(); // Background song turns off
+                music.pause(); // Background song kills instantly
                 current.classList.remove('active');
                 next.classList.add('active');
                 
                 const video = document.getElementById('final-video');
                 gsap.fromTo(next, {opacity: 0}, {opacity: 1, duration: 0.5, onComplete: () => {
-                    video.play().catch((e) => console.log("Video Auto Play Error:", e));
+                    video.play().catch((e) => console.log("Video Auto Play Action:", e));
                     isTransitioning = false;
                 }});
                 return;
@@ -290,11 +299,11 @@
             gsap.to(current, {opacity:0, duration:0.5, ease:"power2.inOut", onComplete:()=>{
                 current.classList.remove('active');
                 next.classList.add('active');
-                gsap.fromTo(next, {opacity:0, scale:0.95}, {opacity:1, scale:1, duration:0.6, ease:"back.out(1.1)", onComplete: () => {
+                gsap.fromTo(next, {opacity:0, scale:0.94}, {opacity:1, scale:1, duration:0.6, ease:"back.out(1.1)", onComplete: () => {
                     isTransitioning = false;
                 }});
             }});
         }
     </script>
 </body>
-</html>
+            </html>
