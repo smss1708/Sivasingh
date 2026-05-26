@@ -1,67 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You diya 💗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Good Night Bestie 💗</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
         
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
         body {
-            background: radial-gradient(circle at center, #1a001f 0%, #000000 100%);
+            background: radial-gradient(ellipse at bottom, #0a0e2a 0%, #020010 100%);
             font-family: 'Poppins', sans-serif;
-            overflow: hidden; margin: 0; color: #ffffff; user-select: none;
+            overflow: hidden; height: 100vh; width: 100vw;
+            color: #ffffff; user-select: none; touch-action: manipulation;
+        }
+
+        /* === STARS GLITTERING === */
+        #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .star { 
+            position: absolute; background: white; border-radius: 50%; 
+            animation: realTwinkle var(--dur) infinite ease-in-out;
+            will-change: opacity, transform;
+        }
+        @keyframes realTwinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.6); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* === RAIN ANIMATION === */
+        #rain-container { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+        .raindrop {
+            position: absolute; top: -20px;
+            width: 2px; height: 20px;
+            background: linear-gradient(transparent, rgba(180, 200, 255, 0.3));
+            animation: fall var(--fall-dur) linear infinite;
+            animation-delay: var(--fall-delay);
+            left: var(--x-pos);
+        }
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(15deg); opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(15deg); opacity: 0; }
+        }
+
+        /* === MOON === */
+        .moon {
+            position: fixed; top: 30px; right: 40px;
+            width: 90px; height: 90px;
+            background: radial-gradient(circle at 35% 35%, #fffde7, #f9e79f);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 236, 150, 0.5), 0 0 120px rgba(255, 236, 150, 0.2);
+            z-index: 2;
+            animation: moonGlow 4s ease-in-out infinite alternate;
+        }
+        .moon::before {
+            content: ''; position: absolute;
+            width: 22px; height: 22px;
+            background: rgba(200, 180, 120, 0.3);
+            border-radius: 50%; top: 20px; left: 25px;
+        }
+        .moon::after {
+            content: ''; position: absolute;
+            width: 12px; height: 12px;
+            background: rgba(200, 180, 120, 0.2);
+            border-radius: 50%; top: 45px; left: 45px;
+        }
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 60px rgba(255, 236, 150, 0.5), 0 0 120px rgba(255, 236, 150, 0.2); }
+            100% { box-shadow: 0 0 80px rgba(255, 236, 150, 0.7), 0 0 160px rgba(255, 236, 150, 0.3); }
+        }
+
+        /* === SHOOTING STARS === */
+        .shooting-star {
+            position: fixed; width: 120px; height: 2px;
+            background: linear-gradient(to right, transparent, #fff, transparent);
+            z-index: 2; pointer-events: none;
+            animation: shoot 5s ease-in infinite;
+            top: 10%; left: 80%;
+            transform: rotate(-35deg);
+            opacity: 0;
+        }
+        .shooting-star:nth-child(2) { animation-delay: 3s; top: 20%; left: 70%; }
+        .shooting-star:nth-child(3) { animation-delay: 7s; top: 5%; left: 85%; }
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 0; }
+            5% { opacity: 1; }
+            15% { transform: translateX(-200px) translateY(140px) rotate(-35deg); opacity: 1; }
+            20% { opacity: 0; }
+            100% { opacity: 0; }
         }
 
         .header-tag {
-            position: fixed; top: 10px; width: 100%; text-align: center;
+            position: fixed; top: 15px; width: 100%; text-align: center;
             z-index: 100; font-family: 'Dancing Script', cursive;
-            color: #ffb3d9; font-size: 1.4rem; letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(255,179,217,0.7);
+            color: #ffe0b2; font-size: 1.6rem;
+            text-shadow: 0 0 15px rgba(255, 200, 100, 0.5);
+            letter-spacing: 2px;
         }
 
+        .footer-tag {
+            position: fixed; bottom: 15px; width: 100%; text-align: center;
+            z-index: 100; font-family: 'Poppins', sans-serif;
+            color: rgba(255, 255, 255, 0.6); font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* Slides */
         .slide {
-            display: none; position: fixed; inset: 0; width: 100%; height: 100vh;
+            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
             align-items: center; justify-content: center; flex-direction: column;
-            transition: all 0.6s ease-in-out; opacity: 0; z-index: 20; padding: 20px; text-align: center;
+            opacity: 0; z-index: 20; padding: 25px; text-align: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: scale(0.97);
         }
-        .slide.active { display: flex; opacity: 1; }
+        .slide.active { display: flex; opacity: 1; transform: scale(1); }
 
-        /* Darker, bolder text for readability */
-        .cute-msg { font-family: 'Dancing Script', cursive; color: #ffebf5; text-shadow: 0 0 20px #ff00cc, 0 0 40px #ff00cc; font-size: 2.8rem; margin-top: 15px; font-weight: 700; }
-        .sub-text { color: #ffffff; font-weight: 600; font-size: 1.1rem; text-shadow: 2px 2px 4px rgba(0,0,0,1); }
+        .cute-msg { 
+            font-family: 'Dancing Script', cursive; color: #ffffff; 
+            text-shadow: 0 0 20px #ff6eb4, 3px 3px 8px rgba(0,0,0,0.9); 
+            font-size: clamp(2.4rem, 9vw, 3.5rem); 
+            margin-top: 15px; font-weight: 700; line-height: 1.2;
+        }
+        .sub-text { 
+            color: #f0e6ff; font-weight: 400; font-size: 1.1rem; 
+            margin-top: 10px; max-width: 330px; 
+            text-shadow: 1px 1px 8px #000;
+            font-style: italic;
+        }
         
         .gif-frame { 
-            width: 260px; height: 260px; border-radius: 30px; 
-            border: 3px solid #ff00cc; 
-            box-shadow: 0 0 50px rgba(255, 0, 204, 0.5); 
-            object-fit: cover; 
+            width: 240px; height: 240px; border-radius: 30px; 
+            border: 3px solid #ff6eb4; 
+            box-shadow: 0 0 40px rgba(255, 110, 180, 0.4), inset 0 0 30px rgba(255, 110, 180, 0.1); 
+            object-fit: cover; background: #000;
         }
 
         .glow-btn { 
-            background: linear-gradient(45deg, #ff00cc, #ff69b4); 
-            padding: 14px 40px; border-radius: 50px; font-weight: 700; 
-            box-shadow: 0 0 25px rgba(255, 0, 204, 0.6); 
-            cursor: pointer; transition: 0.3s; margin: 10px;
-            color: white; border: none; font-size: 1.1rem;
+            background: linear-gradient(45deg, #e84393, #fd79a8); 
+            padding: 14px 35px; border-radius: 50px; font-weight: 700; 
+            box-shadow: 0 0 25px rgba(255, 110, 180, 0.4); 
+            cursor: pointer; border: none; color: white; font-size: 1.05rem;
+            margin-top: 20px; transition: 0.2s;
         }
-        .glow-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px #ff00cc; }
-        
-        .no-btn { background: #333; color: #aaa; padding: 10px 25px; border-radius: 50px; cursor: pointer; transition: 0.2s; }
+        .glow-btn:active { transform: scale(0.9); }
 
-        .solar-system { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
-        .orbit { position: absolute; border: 2px solid rgba(255,105,180,0.4); border-radius: 50%; animation: spin linear infinite; }
-        .orbit-1 { width: 180px; height: 180px; animation-duration: 5s; }
-        .orbit-2 { width: 260px; height: 260px; animation-duration: 9s; animation-direction: reverse; }
-        .planet { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 24px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* === Floating hearts (romantic mist) === */
+        .float-heart {
+            position: fixed; z-index: 3; pointer-events: none; font-size: 20px;
+            animation: floatUp 6s ease-in forwards;
+            opacity: 0;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-300px) scale(1.2); opacity: 0; }
+        }
 
-        .star { position: absolute; background: white; border-radius: 50%; box-shadow: 0 0 10px white; animation: twinkle var(--d) infinite alternate; }
-        @keyframes twinkle { 0% { opacity: 0.2; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.3); } }
+        /* === Starry shimmer ring === */
+        .shimmer-ring {
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 200, 150, 0.15);
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 200, 150, 0.1); }
+            50% { box-shadow: 0 0 50px rgba(255, 200, 150, 0.3); }
+        }
+        .shimmer-ring .orbit-1 { position: absolute; width: 200px; height: 200px; border: 1px solid rgba(255,150,200,0.2); border-radius: 50%; animation: spin 8s linear infinite; }
+        .shimmer-ring .orbit-2 { position: absolute; width: 260px; height: 260px; border: 1px solid rgba(200,150,255,0.15); border-radius: 50%; animation: spin 12s linear infinite reverse; }
+        .shimmer-ring .orbit-1::after { content: '⭐'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
+        .shimmer-ring .orbit-2::after { content: '💫'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
+        .shimmer-ring .center-icon { font-size: 60px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .hold-container { width: 280px; height: 16px; background: rgba(255,255,255,0.2); border-radius: 10px; margin-top: 20px; overflow: hidden; position: relative; border: 1px solid white; }
-        #holdProgress { position: absolute; left: 0; top: 0; height: 100%; background: #ff00cc; width: 0%; box-shadow: 0 0 20px #ff00cc; }
+        /* Progress Bar */
+        .hold-container { width: 280px; height: 18px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 25px; overflow: hidden; border: 2px solid rgba(255,200,150,0.3); }
+        #holdProgress { height: 100%; background: linear-gradient(90deg, #e84393, #fd79a8); width: 0%; transition: width 0.1s linear; }
 
         #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 1000; align-items: center; justify-content: center; }
         video { width: 100%; height: 100%; object-fit: contain; }
@@ -69,87 +187,113 @@
 </head>
 <body>
 
-    <div class="header-tag">I made for you ❤️diya💗</div>
+    <div class="header-tag">✨ Good Night [Dost Ka Name] ✨</div>
+    <div class="footer-tag">Made with ❤️ by sivasingh</div>
+    
+    <audio id="bgMusic" loop src="tere-liye.mp3" preload="auto"></audio>
+    
+    <div id="stars-container"></div>
+    
+    <!-- Rain Container -->
+    <div id="rain-container"></div>
 
-    <audio id="bgMusic" loop src="tere-liye.mp3"></audio>
-    <div id="stars-container" class="fixed inset-0 pointer-events-none"></div>
+    <!-- Moon -->
+    <div class="moon"></div>
 
+    <!-- Shooting Stars -->
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+    <!-- === SLIDE 1 === -->
     <div id="slide1" class="slide active">
         <img src="gif1.gif" class="gif-frame">
-        <h1 class="cute-msg">Hey Gorgeous! ✨</h1>
-        <p class="sub-text">We just met, but my heart already knew it was you!</p>
-        <button onclick="startApp()" class="glow-btn">Touch My Heart 🥺</button>
+        <h1 class="cute-msg">🌙 Shubh Ratri [Dost Ka Name]</h1>
+        <p class="sub-text">Chaand aur taare bhi aaj hamari dosti ki chamak dekh rahe hain...</p>
+        <button onclick="startApp()" class="glow-btn">Dosti Ki Ek Baat Suno ✨</button>
     </div>
 
+    <!-- === SLIDE 2 === -->
     <div id="slide2" class="slide">
         <img src="gif2.gif" class="gif-frame">
-        <h1 class="cute-msg">How are you so cute?</h1>
-        <p class="sub-text">Seriously, your smile is the highlight of my day!</p>
-        <button onclick="next()" class="glow-btn">See More 💕</button>
+        <h1 class="cute-msg">Sukoon Milta Hai Tumse Baat Karke</h1>
+        <p class="sub-text">Din bhar ki thakan minto mein gayab ho jati hai jab tumse baatein hoti hain, tum sachi bohot khoobsurat insaan ho 🌟</p>
+        <button onclick="next()" class="glow-btn">Baatein Aur Aage Badhein... 😊</button>
     </div>
 
+    <!-- === SLIDE 3 === -->
     <div id="slide3" class="slide">
         <img src="gif3.gif" class="gif-frame">
-        <h1 class="cute-msg">Our Vibe is Rare! 😌</h1>
-        <p class="sub-text">Talking to you feels like time has completely stopped.</p>
-        <button onclick="next()" class="glow-btn">Next Step ✨</button>
+        <h1 class="cute-msg">Khusi Hoti Hai Jab Tum Hasti Ho</h1>
+        <p class="sub-text">Jaise taare raat ko roshan karte hain, waise hi tumhari dosti meri life ko hamesha bright rakhti hai ✨</p>
+        <button onclick="next()" class="glow-btn">Dosti Ki Geahrayi 💗</button>
     </div>
 
+    <!-- === SLIDE 4 === -->
     <div id="slide4" class="slide">
-        <div class="texStud mb-6 transition-all duration-500" id="pulseHeart">💖</div>
-        <h1 class="text-2xl font-bold">How much do I adore you?</h1>
-        <div class="hold-container"><div id="holdProgress"></div></div>
-        <button id="holdBtn" class="glow-btn mt-6 select-none">PRESS & HOLD TO FEEL</button>
-    </div>
-
-    <div id="slide5" class="slide">
-        <img src="gif4.gif" class="gif-frame">
-        <h1 class="cute-msg">You're One in a Billion! 💎</h1>
-        <p class="sub-text">It's only been a short time, but the feeling is magical.</p>
-        <button onclick="next()" class="glow-btn">Continue...</button>
-    </div>
-
-    <div id="slide6" class="slide">
-        <div class="solar-system">
-            <div class="orbit orbit-1"><span class="planet">💗</span></div>
-            <div class="orbit orbit-2"><span class="planet">⭐</span></div>
-            <div class="text-6xl">🌍</div>
+        <div class="shimmer-ring">
+            <div class="orbit-1"></div>
+            <div class="orbit-2"></div>
+            <span class="center-icon">🌙</span>
         </div>
-        <h1 class="cute-msg mt-10">My Whole Universe!</h1>
-        <p class="sub-text">Everything seems better when you're around.</p>
-        <button onclick="next()" class="glow-btn">Keep Going 🚀</button>
+        <h1 class="cute-msg mt-8">Sabse Khas Dost Ho</h1>
+        <p class="sub-text">Chaand, taare, aur ye haseen mausam — sab fike hain tumhari is pyaari si smile ke aage 😊</p>
+        <button onclick="next()" class="glow-btn">Ek Pyaara Sa Ehsaas... 🥺</button>
     </div>
 
+    <!-- === SLIDE 5: HOLD TO FEEL === -->
+    <div id="slide5" class="slide">
+        <div class="text-7xl mb-4 transition-transform duration-300" id="pulseHeart">💖</div>
+        <h1 class="text-2xl font-bold">Hamari Dosti Kitni Special Hai?</h1>
+        <p class="sub-text">Is button ko daba kar rakho aur dosti ko feel karo...</p>
+        <div class="hold-container"><div id="holdProgress"></div></div>
+        <button id="holdBtn" class="glow-btn select-none">💞 DABAAKE RAKHO 💞</button>
+    </div>
+
+    <!-- === SLIDE 6 === -->
+    <div id="slide6" class="slide">
+        <img src="gif4.gif" class="gif-frame">
+        <h1 class="cute-msg">Barish Ki Boondein Aur Pyaari Dosti</h1>
+        <p class="sub-text">Jaise barish dharti ko sukoon deti hai, waise hi tumhari dosti har mushkil ko aasan bana deti hai 🌧️💕</p>
+        <button onclick="next()" class="glow-btn">Chalo Aage Badhein ✨</button>
+    </div>
+
+    <!-- === SLIDE 7 === -->
     <div id="slide7" class="slide">
         <img src="gif5.gif" class="gif-frame">
-        <h1 class="cute-msg">Don't ever leave! 🥺</h1>
-        <p class="sub-text">I've never met anyone as sweet and special as you.</p>
-        <button onclick="next()" class="glow-btn">Wait for it...</button>
+        <h1 class="cute-msg">Hamesha Aise Hi Muskurate Rehna</h1>
+        <p class="sub-text">Tumhari muskurahat sachi bohot keemti hai... Isko kabhi khone mat dena, please hamesha khush raho! 😭💗</p>
+        <button onclick="next()" class="glow-btn">Bas Thoda Sa Aur... 😊</button>
     </div>
 
+    <!-- === SLIDE 8 === -->
     <div id="slide8" class="slide">
-        <h1 class="cute-msg">You're my Brightest Star! ⭐</h1>
-        <p class="sub-text max-w-xs">In a sky full of stars, my eyes only search for you.</p>
-        <button onclick="next()" class="glow-btn">Just a bit more ✨</button>
+        <img src="gif6.gif" class="gif-frame">
+        <h1 class="cute-msg">Dekho aaj mausam bhi kitna romantic hai so me bus yahi kahunga</h1>
+        <p class="sub-text">You are mine... I am lucky to have you ⭐😌</p>
+        <button onclick="next()" class="glow-btn">Aakhri Baat ✨</button>
     </div>
 
+    <!-- === SLIDE 9 === -->
     <div id="slide9" class="slide">
-        <img src="gif6.gif" class="gif-frame">
-        <h1 class="cute-msg">Will You Be My Friend? ❤️</h1>
-        <p class="sub-text">...and maybe something even more special? 💍</p>
-        <div id="btnContainer" class="flex flex-wrap justify-center mt-4">
-            <button onclick="next()" class="glow-btn">YES! 😍</button>
-            <button id="noBtn" onclick="trapNo()" class="no-btn">No 🥺</button>
+        <div class="text-8xl mb-2" style="animation: floatUp 2s ease-in-out infinite alternate;">🌙</div>
+        <h1 class="cute-msg">Chalo promise karein ham ik dusre ko kabhi nhi bhulenge?</h1>
+        <p class="sub-text">Aasmaan gawah hai, hamari dosti hamesha aisi hi strong rahegi 🥹💫</p>
+        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
+            <button onclick="next()" class="glow-btn">Haan! Bilkul 😍</button>
+            <button id="noBtn" onclick="trapNo()" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">Nahi 🥺</button>
         </div>
     </div>
 
+    <!-- === SLIDE 10 === -->
     <div id="slide10" class="slide">
         <img src="gif7.gif" class="gif-frame">
-        <h1 class="cute-msg">Yaaay! My Heart is Happy! 🥳</h1>
-        <p class="sub-text">I promise to keep that beautiful smile on your face!</p>
-        <button onclick="playSurprise()" class="glow-btn animate-bounce">A FINAL SURPRISE 🎁</button>
+        <h1 class="cute-msg">Good Night My Baby! 😭💗</h1>
+        <p class="sub-text">Wada raha — aaj sapne me 🌚jarur milenge... 💕</p>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">EK AAKHRI BAAT 🎁✨</button>
     </div>
 
+    <!-- === VIDEO LAYER === -->
     <div id="videoLayer">
         <video id="vPlayer" playsinline src="video1.mp4"></video>
     </div>
@@ -158,76 +302,111 @@
         let step = 1;
         const music = document.getElementById('bgMusic');
 
-        // Background Stars Logic
+        // === STARS GENERATION ===
         const starContainer = document.getElementById('stars-container');
-        for(let i=0; i<100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random()*3 + 1 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.left = Math.random()*100 + 'vw';
-            star.style.top = Math.random()*100 + 'vh';
-            star.style.setProperty('--d', (Math.random()*2+1)+'s');
-            starContainer.appendChild(star);
+        const frag = document.createDocumentFragment();
+        for(let i=0; i<150; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2.5 + 1 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.setProperty('--dur', (Math.random() * 3 + 1.5) + 's');
+            if(i % 7 === 0) s.style.background = '#ffe082';
+            if(i % 11 === 0) s.style.background = '#ffb3d9';
+            frag.appendChild(s);
+        }
+        starContainer.appendChild(frag);
+
+        // === RAIN GENERATION ===
+        const rainContainer = document.getElementById('rain-container');
+        for(let i=0; i<80; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'raindrop';
+            drop.style.setProperty('--x-pos', Math.random() * 100 + 'vw');
+            drop.style.setProperty('--fall-dur', (Math.random() * 0.8 + 0.6) + 's');
+            drop.style.setProperty('--fall-delay', (Math.random() * 3) + 's');
+            drop.style.height = (Math.random() * 15 + 10) + 'px';
+            drop.style.width = (Math.random() * 1.5 + 1) + 'px';
+            rainContainer.appendChild(drop);
         }
 
+        // === FLOATING HEARTS ===
+        function spawnHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'float-heart';
+            const emojis = ['💗', '💖', '💕', '✨', '🌙', '💫', '⭐'];
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 90 + 'vw';
+            heart.style.bottom = '10px';
+            heart.style.fontSize = (Math.random() * 16 + 14) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 7000);
+        }
+        setInterval(spawnHeart, 1200);
+
         function startApp() { 
-            music.play().catch(() => {}); 
+            music.play().catch(e => console.log(e)); 
             next(); 
         }
 
         function next() {
-            document.querySelectorAll('.slide').forEach(s => { s.classList.remove('active'); s.style.display='none'; });
-            step++;
-            const current = document.getElementById('slide'+step);
-            if(current) { 
-                current.style.display='flex'; 
-                setTimeout(() => current.classList.add('active'), 50); 
+            const current = document.getElementById('slide' + step);
+            const nextS = document.getElementById('slide' + (step + 1));
+            if(current) {
+                current.classList.remove('active');
+                setTimeout(() => { current.style.display = 'none'; }, 500);
+            }
+            if(nextS) {
+                step++;
+                nextS.style.display = 'flex';
+                void nextS.offsetWidth;
+                nextS.classList.add('active');
             }
         }
 
-        // The No Button Trap
         function trapNo() {
             const container = document.getElementById('btnContainer');
-            const noBtn = document.getElementById('noBtn');
-            noBtn.style.display = 'none'; // Remove the No button
-            
-            // Add 5 more YES buttons
+            document.getElementById('noBtn').style.display = 'none';
             for(let i=0; i<5; i++) {
-                const newYes = document.createElement('button');
-                newYes.innerHTML = "YES! 💖";
-                newYes.className = "glow-btn";
-                newYes.onclick = next;
-                container.appendChild(newYes);
+                const b = document.createElement('button');
+                b.className = "glow-btn"; b.innerHTML = "Haan! Bilkul 💖";
+                b.onclick = next; container.appendChild(b);
             }
         }
 
-        // Hold Logic
+        // === HOLD LOGIC ===
         let hVal = 0, hInt;
-        const hBtn = document.getElementById('holdBtn'), hProg = document.getElementById('holdProgress'), pHeart = document.getElementById('pulseHeart');
+        const hBtn = document.getElementById('holdBtn'), 
+              hProg = document.getElementById('holdProgress'), 
+              pHeart = document.getElementById('pulseHeart');
         
         const startH = (e) => { 
             e.preventDefault(); 
-            pHeart.style.transform = 'scale(1.8)';
+            pHeart.style.transform = 'scale(1.6)';
             hInt = setInterval(() => { 
-                hVal += 2; 
+                hVal += 2.5; 
                 hProg.style.width = hVal + '%'; 
                 if(hVal >= 100) { clearInterval(hInt); next(); } 
-            }, 40); 
+            }, 30); 
         };
         const endH = () => { clearInterval(hInt); hVal = 0; hProg.style.width = '0%'; pHeart.style.transform = 'scale(1)'; };
         
-        hBtn.onmousedown = hBtn.ontouchstart = startH; 
-        window.onmouseup = window.ontouchend = endH;
+        hBtn.addEventListener('touchstart', startH);
+        hBtn.addEventListener('mousedown', startH);
+        window.addEventListener('touchend', endH);
+        window.addEventListener('mouseup', endH);
 
-        function playSurprise() { 
-            music.pause(); 
+        function playSurprise() {
+            music.pause();
             const layer = document.getElementById('videoLayer');
-            const video = document.getElementById('vPlayer');
             layer.style.display = 'flex';
-            video.play();
-            video.onended = () => { location.reload(); };
+            const v = document.getElementById('vPlayer');
+            v.play();
+            v.onended = () => location.reload();
         }
     </script>
 </body>
-                                                     </html>
+    </html>
