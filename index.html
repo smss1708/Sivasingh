@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I made something special for you 💕</title>
+    <title>Something Special For You</title>
     <style>
         * {
             box-sizing: border-box;
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0b0214;
+            background: #06010f;
             color: #ffffff;
             overflow: hidden;
             height: 100vh;
@@ -29,10 +29,10 @@
             max-width: 420px;
             height: 100vh;
             max-height: 850px;
-            background: #0f051d;
+            background: #0c0418;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.85);
             border-radius: 0;
             display: flex;
             flex-direction: column;
@@ -40,13 +40,13 @@
 
         @media (min-width: 450px) {
             .phone-container {
-                border-radius: 32px;
-                border: 8px solid #23123a;
+                border-radius: 36px;
+                border: 10px solid #2a164d;
                 height: 90vh;
             }
         }
 
-        /* Celestial Sky Background elements */
+        /* Celestial Cosmic Sky Background */
         .sky-bg {
             position: absolute;
             top: 0;
@@ -55,19 +55,20 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            background: radial-gradient(circle at 50% 20%, #1a0b36 0%, #070210 100%);
+            background: radial-gradient(circle at 50% 25%, #1f0d40 0%, #070212 100%);
         }
 
         .moon {
             position: absolute;
-            top: 40px;
-            right: 40px;
-            width: 45px;
-            height: 45px;
+            top: 45px;
+            right: 45px;
+            width: 50px;
+            height: 50px;
             background: transparent;
             border-radius: 50%;
-            box-shadow: -10px 8px 0 2px #fff8e7, 0 0 15px rgba(255,248,231,0.2);
-            opacity: 0.85;
+            box-shadow: -12px 10px 0 2px #fffbe6, 0 0 25px rgba(255,251,230,0.3);
+            opacity: 0.95;
+            animation: moonGlow 4s infinite alternate ease-in-out;
         }
 
         .stars-container {
@@ -75,14 +76,14 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 75px 140px, #fff, transparent),
-                radial-gradient(1px 1px at 120px 50px, rgba(255,255,255,0.7), transparent),
-                radial-gradient(2px 2px at 240px 320px, #ffb3c6, transparent),
-                radial-gradient(1px 1px at 310px 180px, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 180px 240px, rgba(255,255,255,0.5), transparent);
+                radial-gradient(1.5px 1.5px at 30px 40px, #ffffff, transparent),
+                radial-gradient(2px 2px at 85px 160px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 140px 60px, rgba(255,255,255,0.85), transparent),
+                radial-gradient(2.5px 2.5px at 260px 340px, #ffb3c6, transparent),
+                radial-gradient(1.5px 1.5px at 320px 200px, #ffffff, transparent),
+                radial-gradient(2px 2px at 190px 260px, rgba(255,255,255,0.7), transparent);
             background-size: 100% 100%;
-            opacity: 0.6;
+            opacity: 0.75;
         }
 
         .page {
@@ -95,13 +96,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             z-index: 2;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .page.active {
             display: flex;
+            opacity: 1;
+            transform: scale(1);
         }
 
         #bg-music, #video-element {
@@ -110,56 +116,60 @@
 
         /* Page 1: Welcome */
         #page1 {
-            background: linear-gradient(135deg, #3b0717 0%, #0c0105 100%);
+            background: linear-gradient(135deg, #440518 0%, #0d0106 100%);
         }
 
         .card-p1 {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 105, 180, 0.25);
-            padding: 40px 25px;
-            border-radius: 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 105, 180, 0.35);
+            padding: 45px 25px;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             width: 100%;
+            animation: floatCard 4s infinite ease-in-out;
         }
 
         .title-p1 {
             font-family: 'Georgia', serif;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: #ff4d79;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-style: italic;
-            text-shadow: 0 0 15px rgba(255, 77, 121, 0.5);
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 77, 121, 0.75), 0 0 40px rgba(255, 77, 121, 0.4);
         }
 
         .subtitle-p1 {
-            font-size: 1.05rem;
-            color: #f3d1dc;
-            margin-bottom: 35px;
-            line-height: 1.6;
-            font-weight: 300;
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            line-height: 1.7;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
         .btn-romantic {
             background: linear-gradient(45deg, #ff4d79, #ff758c);
             color: white;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.05rem;
-            font-weight: 600;
+            padding: 16px 38px;
+            font-size: 1.1rem;
+            font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 77, 121, 0.4);
-            transition: transform 0.2s;
+            box-shadow: 0 10px 25px rgba(255, 77, 121, 0.5), 0 0 15px rgba(255, 117, 140, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .btn-romantic:active {
-            transform: scale(0.95);
+            transform: scale(0.94);
         }
 
         /* Page 2: Loading */
@@ -175,75 +185,81 @@
 
         .hearts-flow {
             position: relative;
-            height: 40px;
-            margin-bottom: 10px;
+            height: 45px;
+            margin-bottom: 12px;
         }
 
         .moving-heart {
-            font-size: 2rem;
+            font-size: 2.2rem;
             position: absolute;
             bottom: 0;
             left: 0;
             transform: translateX(-50%);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
         }
 
         .progress-bar-wrapper {
             width: 100%;
-            height: 34px;
+            height: 36px;
             background: #ffffff;
-            border: 3px solid #ff4d79;
-            border-radius: 12px;
+            border: 3.5px solid #ff4d79;
+            border-radius: 14px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .progress-fill {
             height: 100%;
             width: 0%;
-            background: #ff4d79;
+            background: linear-gradient(90deg, #ff4d79, #ff758c);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .loading-text {
-            font-weight: 700;
-            font-size: 1.2rem;
+            color: #ff4d79;
+            font-weight: 800;
+            font-size: 1.3rem;
             margin-top: 25px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
             animation: blink 1.2s infinite;
         }
 
-        /* Page 3: Game Mechanics Grid */
+        /* Page 3: Bow & Arrow Game Layout */
         #page3 {
-            background: linear-gradient(to bottom, #dff0fa 0%, #fce7f3 100%);
+            background: linear-gradient(to bottom, #d6ebf7 0%, #fcd5ec 100%);
             justify-content: space-between;
-            padding: 30px 15px 20px 15px;
+            padding: 35px 20px 25px 20px;
         }
 
         .game-title {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: #db2777;
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: 30px;
             font-family: 'Georgia', serif;
             font-style: italic;
-            font-size: 1.3rem;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border: 2px solid #fbcfe8;
-            width: 90%;
+            font-size: 1.35rem;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(219, 39, 119, 0.15);
+            border: 2.5px solid #fbcfe8;
+            width: 95%;
             z-index: 10;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.05);
         }
 
         .balloon-canvas {
             position: relative;
             width: 100%;
-            height: 60%;
-            margin: 15px 0;
+            height: 52%;
+            margin: 10px 0;
         }
 
         .balloon-column {
@@ -253,72 +269,73 @@
             transform: translateX(-50%);
             display: flex;
             flex-direction: column-reverse;
-            gap: 12px;
+            gap: 15px;
             align-items: center;
             width: 100%;
             height: 100%;
             justify-content: flex-end;
-            padding-top: 10px;
+            padding-top: 15px;
         }
 
         .heart-balloon {
             position: relative;
-            width: 58px;
-            height: 52px;
+            width: 62px;
+            height: 56px;
             background: #ff4d79;
             border-radius: 50% 50% 0 0;
             transform: rotate(-45deg);
             cursor: pointer;
-            box-shadow: -4px 4px 10px rgba(219,39,119,0.3), inset -4px 4px 6px rgba(255,255,255,0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: -5px 5px 12px rgba(219,39,119,0.35), inset -5px 5px 8px rgba(255,255,255,0.45);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .heart-balloon::after {
             content: '';
             position: absolute;
-            width: 58px;
-            height: 52px;
+            width: 62px;
+            height: 56px;
             background: #ff4d79;
             border-radius: 50% 50% 50% 0;
-            top: 26px;
-            left: 26px;
+            top: 28px;
+            left: 28px;
             transform: rotate(90deg);
             box-shadow: inset -4px -4px 6px rgba(0,0,0,0.05);
         }
 
         .heart-balloon .string {
             position: absolute;
-            bottom: -32px;
-            left: 32px;
+            bottom: -35px;
+            left: 35px;
             width: 2px;
-            height: 25px;
-            background: rgba(219,39,119,0.4);
+            height: 28px;
+            background: rgba(219,39,119,0.45);
             transform: rotate(45deg);
         }
 
         .heart-balloon.popped {
-            animation: popEffect 0.25s forwards ease-out;
+            animation: popEffect 0.3s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
             pointer-events: none;
         }
 
-        /* Active Text Alert Window Over Game Overlay */
+        /* Active Text Popups */
         .reason-popup {
             position: absolute;
-            top: 35%;
-            left: 5%;
-            width: 90%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 2px solid #ff4d79;
+            top: 25%;
+            left: 4%;
+            width: 92%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
+            padding: 25px 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            border: 3px solid #ff4d79;
             text-align: center;
-            color: #db2777;
-            font-weight: 600;
-            font-size: 1.1rem;
+            color: #b91c1c;
+            font-weight: 700;
+            font-size: 1.2rem;
             transform: scale(0);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 100;
+            line-height: 1.5;
         }
 
         .reason-popup.show {
@@ -326,44 +343,50 @@
         }
 
         .reason-popup button {
-            margin-top: 15px;
-            background: #db2777;
+            margin-top: 18px;
+            background: linear-gradient(45deg, #ff4d79, #ff758c);
             color: white;
             border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 77, 121, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Interactive Bow Controller Space Layout */
+        /* Fixed Elevated & Enlarged Dhanush Space */
         .interactive-bow-space {
             width: 100%;
-            height: 140px;
+            height: 180px; 
             position: relative;
             display: flex;
             justify-content: center;
             align-items: flex-end;
             touch-action: none;
+            margin-bottom: 20px; 
         }
 
         .bow-svg-wrapper {
-            width: 160px;
-            height: 100px;
+            width: 210px; 
+            height: 130px;
             position: absolute;
-            bottom: 10px;
+            bottom: 25px;
             z-index: 5;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
         }
 
         .arrow-graphic {
             position: absolute;
-            bottom: 30px;
+            bottom: 50px; 
             left: 50%;
             transform: translateX(-50%);
             width: 6px;
-            height: 55px;
-            background: #57534e;
-            border-radius: 3px;
+            height: 75px; 
+            background: #44403c;
+            border-radius: 4px;
             z-index: 6;
             transform-origin: bottom center;
         }
@@ -371,142 +394,188 @@
         .arrow-graphic::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -6px;
+            top: -12px;
+            left: -7px;
             width: 0;
             height: 0;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            border-bottom: 14px solid #db2777;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 16px solid #db2777;
         }
 
         .control-trigger-node {
             position: absolute;
-            width: 36px;
-            height: 36px;
-            background: #ff4d79;
+            width: 44px; 
+            height: 44px;
+            background: linear-gradient(135deg, #ff4d79, #ff758c);
             border: 4px solid white;
             border-radius: 50%;
-            bottom: 12px;
+            bottom: 28px; 
             left: 50%;
             transform: translateX(-50%);
             cursor: grab;
             z-index: 10;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            transition: background 0.2s;
         }
 
         .control-trigger-node:active {
             cursor: grabbing;
+            background: #db2777;
         }
 
-        /* Page 4: Extra Custom Added GIF Frame View */
+        .hint-drag-text {
+            position: absolute;
+            bottom: 2px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #db2777;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Page 4: GIF Showcase Card */
         #page4 {
-            background: linear-gradient(135deg, #16072b 0%, #06020e 100%);
+            background: linear-gradient(135deg, #1b0933 0%, #05010d 100%);
         }
 
         .gif-frame-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255, 77, 121, 0.2);
-            border-radius: 24px;
-            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 77, 121, 0.3);
+            border-radius: 28px;
+            padding: 25px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.55);
         }
 
         .gif-element {
             width: 100%;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
-        /* Cards and Structural Frame setups for remaining sections */
-        .romantic-bg {
-            background: linear-gradient(135deg, #130626 0%, #080212 100%);
+        .glowing-card-title {
+            color: #ff4d79; 
+            margin-bottom: 12px; 
+            font-family: 'Georgia', serif; 
+            font-style: italic;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 77, 121, 0.6);
         }
 
+        .glowing-card-desc {
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            color: #ffffff;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Romantic Message Cards Grid */
         .romantic-msg-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 25px 20px;
-            border-radius: 28px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            padding: 30px 22px;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.65);
             width: 100%;
             z-index: 5;
         }
 
         .romantic-img-frame {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 18px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(255, 77, 121, 0.3);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 2.5px solid rgba(255, 77, 121, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
         }
 
         .romantic-text {
-            font-size: 1.15rem;
-            line-height: 1.6;
-            color: #fff;
+            font-size: 1.25rem;
+            line-height: 1.65;
+            color: #ffffff;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
 
         .romantic-text span {
             color: #ff4d79;
-            font-weight: 600;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 77, 121, 0.5);
         }
 
-        /* Proposal Screen Design Layout */
-        #page9 {
-            background: #05010a;
+        /* Page 8: Proposal Screen */
+        #page8 {
+            background: #040108;
         }
 
         .proposal-heading {
             font-family: 'Georgia', serif;
-            font-size: 2.1rem;
+            font-size: 2.3rem;
             color: #ffffff;
-            margin-bottom: 45px;
+            margin-bottom: 55px;
             font-style: italic;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0,0,0,0.8);
+            padding: 0 10px;
         }
 
         .proposal-heading span {
             color: #ff4d79;
             display: inline-block;
             animation: heartBeat 1.2s infinite;
+            text-shadow: 0 0 15px rgba(255, 77, 121, 0.7);
         }
 
         .proposal-buttons {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 20px;
             width: 100%;
             align-items: center;
+            z-index: 10;
         }
 
         .btn-proposal {
             width: 85%;
-            padding: 16px;
+            padding: 18px;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .btn-yes {
-            background: #ff3366;
+            background: linear-gradient(45deg, #ff3366, #ff5c8a);
             color: white;
-            box-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.65);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s;
         }
+        .btn-yes:active { transform: scale(0.95); }
 
         .btn-maybe {
-            background: #271c3a;
+            background: #25163e;
             color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.1);
             position: relative;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
-        /* Full Screen Video Overlay Module Container */
+        /* Full Overlay Video Layout */
         .video-container-page {
             position: absolute;
             top: 0;
@@ -531,28 +600,40 @@
         }
 
         .tap-hint {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            margin-top: 25px;
-            letter-spacing: 1px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 30px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
             animation: blink 1.5s infinite;
         }
 
-        /* Frame Animations Keyblocks */
+        /* High-End Keyframes Frame Mechanics */
         @keyframes popEffect {
             0% { transform: scale(1) rotate(-45deg); opacity: 1; }
-            50% { transform: scale(1.5) rotate(-45deg); opacity: 0.4; }
+            40% { transform: scale(1.6) rotate(-45deg); background: #ff758c; opacity: 0.7; }
             100% { transform: scale(0) rotate(-45deg); opacity: 0; }
         }
 
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            50% { opacity: 0.3; }
         }
 
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.25); }
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: -12px 10px 0 2px #fffbe6, 0 0 20px rgba(255,251,230,0.2); }
+            100% { box-shadow: -12px 10px 0 2px #fffbe6, 0 0 35px rgba(255,251,230,0.45); }
         }
     </style>
 </head>
@@ -604,11 +685,12 @@
 
             <div class="interactive-bow-space" id="bow-container">
                 <svg class="bow-svg-wrapper" id="bow-svg" viewBox="0 0 100 60">
-                    <path d="M 10 45 Q 50 15 90 45" fill="none" stroke="#db2777" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M 10 45 L 50 45 L 90 45" id="bowstring" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                    <path d="M 5 45 Q 50 10 95 45" fill="none" stroke="#db2777" stroke-width="4.5" stroke-linecap="round"/>
+                    <path d="M 5 45 L 50 45 L 95 45" id="bowstring" fill="none" stroke="#cbd5e1" stroke-width="2.5"/>
                 </svg>
                 <div class="arrow-graphic" id="interactive-arrow"></div>
                 <div class="control-trigger-node" id="pull-node"></div>
+                <div class="hint-drag-text" id="drag-hint">⬇️ Pull Down & Release ⬇️</div>
             </div>
         </div>
 
@@ -616,8 +698,8 @@
             <div class="sky-bg"><div class="moon"></div><div class="stars-container"></div></div>
             <div class="gif-frame-card">
                 <img src="gif1.gif" alt="Special Gift Animation" class="gif-element">
-                <h3 style="color:#ff4d79; margin-bottom:10px; font-family:Georgia, serif; font-style:italic;">Every Little Thing...</h3>
-                <p style="font-size:1rem; line-height:1.5; color:#f3d1dc;">Every shared memory, every laugh, and every digital note reminds me of how wonderful you truly are.</p>
+                <h3 class="glowing-card-title">Every Little Thing...</h3>
+                <p class="glowing-card-desc">Every shared memory, every laugh, and every sweet moment reminds me of how wonderful you truly are.</p>
             </div>
             <div class="tap-hint">Tap anywhere to continue...</div>
         </div>
@@ -651,7 +733,7 @@
 
         <div class="page" id="page8">
             <div class="sky-bg"><div class="moon"></div><div class="stars-container"></div></div>
-            <h2 class="proposal-heading">Will you be my GirlFriend <span>❤️</span>?</h2>
+            <h2 class="proposal-heading">Will you be my babu😁 <span>❤️</span>?</h2>
             
             <div class="proposal-buttons">
                 <button class="btn-proposal btn-yes" onclick="showFinalVideo()">Absolutely Yes! 🌹</button>
@@ -671,19 +753,18 @@
         let currentBgMusic = document.getElementById('bg-music');
         let finalVideo = document.getElementById('final-video');
         
-        // Reason array matching your exact UI configurations sequentially
         const reasonsList = [
             "Every moment with you feels special 🌷",
             "Your heart is genuinely so kind 💖",
             "You always know how to make me laugh 😂",
             "Your smile feels so comforting 🤍",
-            "You are simply the best thing that ever happened to me! ✨"
+            "You make my entire universe complete! ✨"
         ];
         
         let currentLevel = 1; 
 
         function startJourney() {
-            currentBgMusic.play().catch(err => console.log("Audio target gesture required"));
+            currentBgMusic.play().catch(err => console.log("Interaction triggered sound"));
             switchPage(1, 2);
             runLoveLoader();
         }
@@ -711,28 +792,30 @@
                         setupBowMechanics();
                     }, 600);
                 }
-            }, 35);
+            }, 30);
         }
 
-        // Complete Mechanical Drag & Shoot Logic Controller Functions
+        // High-Quality Drag, Pull back and Shooting Engine Logic
         function setupBowMechanics() {
             const pullNode = document.getElementById('pull-node');
             const bowstring = document.getElementById('bowstring');
             const arrow = document.getElementById('interactive-arrow');
-            const bowContainer = document.getElementById('bow-container');
+            const dragHint = document.getElementById('drag-hint');
             
             let isDragging = false;
             let startY = 0;
             let currentDeltaY = 0;
-            const maxPull = 60; 
+            const maxPull = 75; // Increased maximum pull limit for better control structure
 
             function onDragStart(e) {
                 if (document.getElementById('game-reason-popup').classList.contains('show')) return;
                 isDragging = true;
                 startY = e.touches ? e.touches[0].clientY : e.clientY;
+                
                 pullNode.style.transition = 'none';
                 bowstring.style.transition = 'none';
                 arrow.style.transition = 'none';
+                dragHint.style.opacity = '0';
             }
 
             function onDragMove(e) {
@@ -745,51 +828,51 @@
                 
                 pullNode.style.transform = `translate(-50%, ${currentDeltaY}px)`;
                 arrow.style.transform = `translate(-50%, ${currentDeltaY}px)`;
-                bowstring.setAttribute('d', `M 10 45 L 50 ${45 + currentDeltaY} L 90 45`);
+                // Stretch string anchor dynamically based on pulling calculations
+                bowstring.setAttribute('d', `M 5 45 L 50 ${45 + currentDeltaY} L 95 45`);
             }
 
             function onDragEnd() {
                 if (!isDragging) return;
                 isDragging = false;
                 
-                if (currentDeltaY > 25) {
-                    // Execute High Velocity Release Trigger
+                if (currentDeltaY > 30) {
                     executeArrowShot();
                 } else {
-                    // Return to standard idle states
                     resetBowString();
                 }
             }
 
             function resetBowString() {
-                pullNode.style.transition = 'all 0.2s ease';
-                bowstring.style.transition = 'all 0.2s ease';
-                arrow.style.transition = 'all 0.2s ease';
+                pullNode.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                bowstring.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                arrow.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                 
                 pullNode.style.transform = 'translateX(-50%)';
                 arrow.style.transform = 'translateX(-50%)';
-                bowstring.setAttribute('d', 'M 10 45 L 50 45 L 90 45');
+                bowstring.setAttribute('d', 'M 5 45 L 50 45 L 95 45');
+                dragHint.style.opacity = '1';
                 currentDeltaY = 0;
             }
 
             function executeArrowShot() {
-                arrow.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                // Project arrow vertically upward into active targets
-                arrow.style.transform = 'translate(-50%, -450px)';
+                // High velocity animation vector
+                arrow.style.transition = 'transform 0.18s cubic-bezier(0.215, 0.610, 0.355, 1)';
+                arrow.style.transform = 'translate(-50%, -550px)';
                 
-                // Animate elastic bow snapback response
-                pullNode.style.transition = 'all 0.08s ease';
-                bowstring.style.transition = 'all 0.08s ease';
+                // Elastic bow back snap response simulation
+                pullNode.style.transition = 'all 0.05s ease';
+                bowstring.style.transition = 'all 0.05s ease';
                 pullNode.style.transform = 'translateX(-50%)';
-                bowstring.setAttribute('d', 'M 10 45 L 50 40 L 90 45');
+                bowstring.setAttribute('d', 'M 5 45 L 50 38 L 95 45');
                 
                 setTimeout(() => {
-                    bowstring.setAttribute('d', 'M 10 45 L 50 45 L 90 45');
+                    bowstring.setAttribute('d', 'M 5 45 L 50 45 L 95 45');
                     processPopDetection();
-                }, 800);
+                }, 200);
             }
 
-            // Listeners for multi-environment standard interaction models
+            // Universal Input Listeners
             pullNode.addEventListener('mousedown', onDragStart);
             window.addEventListener('mousemove', onDragMove);
             window.addEventListener('mouseup', onDragEnd);
@@ -804,25 +887,24 @@
             if (activeBalloon) {
                 activeBalloon.classList.add('popped');
                 
-                // Show floating dialog with reason text matching index parameters
                 setTimeout(() => {
                     document.getElementById('popup-reason-text').innerText = reasonsList[currentLevel - 1];
                     document.getElementById('game-reason-popup').classList.add('show');
-                }, 300);
+                }, 350);
             }
         }
 
         function closeReasonPopup() {
             document.getElementById('game-reason-popup').classList.remove('show');
             
-            // Reload arrow frame component matrices smoothly
             const arrow = document.getElementById('interactive-arrow');
+            const dragHint = document.getElementById('drag-hint');
             arrow.style.transition = 'none';
             arrow.style.transform = 'translateX(-50%)';
+            dragHint.style.opacity = '1';
             
             currentLevel++;
             
-            // Navigate directly upon exhausting all 5 balloon targets perfectly
             if (currentLevel > 5) {
                 setTimeout(() => {
                     switchPage(3, 4);
@@ -838,11 +920,11 @@
             const btn = document.getElementById('maybe-btn');
             const container = document.querySelector('.phone-container');
             
-            const maxW = container.clientWidth - btn.clientWidth - 20;
-            const maxH = container.clientHeight - btn.clientHeight - 120;
+            const maxW = container.clientWidth - btn.clientWidth - 30;
+            const maxH = container.clientHeight - btn.clientHeight - 150;
             
-            const randomX = Math.max(10, Math.floor(Math.random() * maxW));
-            const randomY = Math.max(50, Math.floor(Math.random() * maxH));
+            const randomX = Math.max(15, Math.floor(Math.random() * maxW));
+            const randomY = Math.max(80, Math.floor(Math.random() * maxH));
             
             btn.style.position = 'absolute';
             btn.style.left = randomX + 'px';
