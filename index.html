@@ -2,52 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Something Special For You</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Priya ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* RESET & BASE */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #06010f;
-            color: #ffffff;
-            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            overflow: hidden; /* Prevent scrolling, handled by JS */
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .phone-container {
+        /* BACKGROUND ANIMATION */
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 420px;
-            height: 100vh;
-            max-height: 850px;
-            background: #0c0418;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, #000 90%);
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* CONTAINER (MOBILE FIRST REEL STYLE) */
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            height: 100%;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.85);
-            border-radius: 0;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @media (min-width: 450px) {
-            .phone-container {
-                border-radius: 36px;
-                border: 10px solid #2a164d;
-                height: 90vh;
-            }
-        }
-
-        /* Celestial Cosmic Sky Background */
-        .sky-bg {
+        /* FLOATING HEARTS */
+        .hearts-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -55,889 +78,495 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            background: radial-gradient(circle at 50% 25%, #1f0d40 0%, #070212 100%);
+            overflow: hidden;
         }
 
-        .moon {
+        .heart {
             position: absolute;
-            top: 45px;
-            right: 45px;
-            width: 50px;
-            height: 50px;
-            background: transparent;
+            bottom: -50px;
+            background-color: rgba(255, 105, 180, 0.6);
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            margin: 0 10px;
+            transform: rotate(-45deg);
+            animation: float 6s ease-in infinite;
+        }
+
+        .heart::after, .heart::before {
+            content: "";
+            background-color: inherit;
             border-radius: 50%;
-            box-shadow: -12px 10px 0 2px #fffbe6, 0 0 25px rgba(255,251,230,0.3);
-            opacity: 0.95;
-            animation: moonGlow 4s infinite alternate ease-in-out;
-        }
-
-        .stars-container {
+            height: 30px;
+            width: 30px;
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(1.5px 1.5px at 30px 40px, #ffffff, transparent),
-                radial-gradient(2px 2px at 85px 160px, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 140px 60px, rgba(255,255,255,0.85), transparent),
-                radial-gradient(2.5px 2.5px at 260px 340px, #ffb3c6, transparent),
-                radial-gradient(1.5px 1.5px at 320px 200px, #ffffff, transparent),
-                radial-gradient(2px 2px at 190px 260px, rgba(255,255,255,0.7), transparent);
-            background-size: 100% 100%;
-            opacity: 0.75;
         }
 
-        .page {
+        .heart::after { top: 0; left: 15px; }
+        .heart::before { top: -15px; left: 0; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-45deg) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(-45deg) scale(1.2); opacity: 0; }
+        }
+
+        /* HEADER */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .header-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        .brand {
+            font-weight: 600;
+            color: #ff6b81;
+        }
+
+        /* SECTIONS */
+        .section {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px;
-            text-align: center;
-            z-index: 2;
+            padding: 20px;
             opacity: 0;
-            transform: scale(1.05);
-            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.95);
+            z-index: 10;
         }
 
-        .page.active {
-            display: flex;
+        .section.active {
             opacity: 1;
+            visibility: visible;
             transform: scale(1);
         }
 
-        #bg-music, #video-element {
-            display: none;
-        }
-
-        /* Page 1: Welcome */
-        #page1 {
-            background: linear-gradient(135deg, #440518 0%, #0d0106 100%);
-        }
-
-        .card-p1 {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 105, 180, 0.35);
-            padding: 45px 25px;
-            border-radius: 32px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            width: 100%;
-            animation: floatCard 4s infinite ease-in-out;
-        }
-
-        .title-p1 {
-            font-family: 'Georgia', serif;
-            font-size: 2.6rem;
-            color: #ff4d79;
-            margin-bottom: 20px;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(255, 77, 121, 0.75), 0 0 40px rgba(255, 77, 121, 0.4);
-        }
-
-        .subtitle-p1 {
-            font-size: 1.15rem;
-            color: #ffffff;
-            margin-bottom: 40px;
-            line-height: 1.7;
-            font-weight: 400;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-        }
-
-        .btn-romantic {
-            background: linear-gradient(45deg, #ff4d79, #ff758c);
-            color: white;
-            border: none;
-            padding: 16px 38px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(255, 77, 121, 0.5), 0 0 15px rgba(255, 117, 140, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .btn-romantic:active {
-            transform: scale(0.94);
-        }
-
-        /* Page 2: Loading */
-        #page2 {
-            background-color: #ffb3c6;
-            color: #ff4d79;
-        }
-
-        .loader-container {
-            width: 85%;
-            position: relative;
-        }
-
-        .hearts-flow {
-            position: relative;
-            height: 45px;
-            margin-bottom: 12px;
-        }
-
-        .moving-heart {
-            font-size: 2.2rem;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            transform: translateX(-50%);
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
-        }
-
-        .progress-bar-wrapper {
-            width: 100%;
-            height: 36px;
-            background: #ffffff;
-            border: 3.5px solid #ff4d79;
-            border-radius: 14px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ff4d79, #ff758c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 0.95rem;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .loading-text {
-            color: #ff4d79;
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-top: 25px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
-            animation: blink 1.2s infinite;
-        }
-
-        /* Page 3: Bow & Arrow Game Layout */
-        #page3 {
-            background: linear-gradient(to bottom, #d6ebf7 0%, #fcd5ec 100%);
-            justify-content: space-between;
-            padding: 35px 20px 25px 20px;
-        }
-
-        .game-title {
-            background: rgba(255, 255, 255, 0.95);
-            color: #db2777;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            font-size: 1.35rem;
-            font-weight: 800;
-            box-shadow: 0 8px 20px rgba(219, 39, 119, 0.15);
-            border: 2.5px solid #fbcfe8;
-            width: 95%;
-            z-index: 10;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.05);
-        }
-
-        .balloon-canvas {
-            position: relative;
-            width: 100%;
-            height: 52%;
-            margin: 10px 0;
-        }
-
-        .balloon-column {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 15px;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: flex-end;
-            padding-top: 15px;
-        }
-
-        .heart-balloon {
-            position: relative;
-            width: 62px;
-            height: 56px;
-            background: #ff4d79;
-            border-radius: 50% 50% 0 0;
-            transform: rotate(-45deg);
-            cursor: pointer;
-            box-shadow: -5px 5px 12px rgba(219,39,119,0.35), inset -5px 5px 8px rgba(255,255,255,0.45);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .heart-balloon::after {
-            content: '';
-            position: absolute;
-            width: 62px;
-            height: 56px;
-            background: #ff4d79;
-            border-radius: 50% 50% 50% 0;
-            top: 28px;
-            left: 28px;
-            transform: rotate(90deg);
-            box-shadow: inset -4px -4px 6px rgba(0,0,0,0.05);
-        }
-
-        .heart-balloon .string {
-            position: absolute;
-            bottom: -35px;
-            left: 35px;
-            width: 2px;
-            height: 28px;
-            background: rgba(219,39,119,0.45);
-            transform: rotate(45deg);
-        }
-
-        .heart-balloon.popped {
-            animation: popEffect 0.3s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
-            pointer-events: none;
-        }
-
-        /* Active Text Popups */
-        .reason-popup {
-            position: absolute;
-            top: 25%;
-            left: 4%;
-            width: 92%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 24px;
-            padding: 25px 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-            border: 3px solid #ff4d79;
-            text-align: center;
-            color: #b91c1c;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transform: scale(0);
-            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 100;
-            line-height: 1.5;
-        }
-
-        .reason-popup.show {
-            transform: scale(1);
-        }
-
-        .reason-popup button {
-            margin-top: 18px;
-            background: linear-gradient(45deg, #ff4d79, #ff758c);
-            color: white;
-            border: none;
-            padding: 10px 26px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 77, 121, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Fixed Elevated & Enlarged Dhanush Space */
-        .interactive-bow-space {
-            width: 100%;
-            height: 180px; 
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            touch-action: none;
-            margin-bottom: 20px; 
-        }
-
-        .bow-svg-wrapper {
-            width: 210px; 
-            height: 130px;
-            position: absolute;
-            bottom: 25px;
-            z-index: 5;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
-        }
-
-        .arrow-graphic {
-            position: absolute;
-            bottom: 50px; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 75px; 
-            background: #44403c;
-            border-radius: 4px;
-            z-index: 6;
-            transform-origin: bottom center;
-        }
-
-        .arrow-graphic::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: -7px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 16px solid #db2777;
-        }
-
-        .control-trigger-node {
-            position: absolute;
-            width: 44px; 
-            height: 44px;
-            background: linear-gradient(135deg, #ff4d79, #ff758c);
-            border: 4px solid white;
-            border-radius: 50%;
-            bottom: 28px; 
-            left: 50%;
-            transform: translateX(-50%);
-            cursor: grab;
-            z-index: 10;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-            transition: background 0.2s;
-        }
-
-        .control-trigger-node:active {
-            cursor: grabbing;
-            background: #db2777;
-        }
-
-        .hint-drag-text {
-            position: absolute;
-            bottom: 2px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #db2777;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        /* Page 4: GIF Showcase Card */
-        #page4 {
-            background: linear-gradient(135deg, #1b0933 0%, #05010d 100%);
-        }
-
-        .gif-frame-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255, 77, 121, 0.3);
-            border-radius: 28px;
+        /* GLASS CARDS */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
             padding: 25px;
             width: 100%;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.55);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .gif-element {
+        .gif-container {
             width: 100%;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-        .glowing-card-title {
-            color: #ff4d79; 
-            margin-bottom: 12px; 
-            font-family: 'Georgia', serif; 
-            font-style: italic;
-            font-size: 1.6rem;
-            font-weight: bold;
-            text-shadow: 0 0 15px rgba(255, 77, 121, 0.6);
-        }
-
-        .glowing-card-desc {
-            font-size: 1.1rem; 
-            line-height: 1.6; 
-            color: #ffffff;
-            font-weight: 400;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-
-        /* Romantic Message Cards Grid */
-        .romantic-msg-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
-            padding: 30px 22px;
-            border-radius: 32px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.65);
+        .gif-container img {
             width: 100%;
-            z-index: 5;
-        }
-
-        .romantic-img-frame {
-            width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 2.5px solid rgba(255, 77, 121, 0.4);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
         }
 
-        .romantic-text {
-            font-size: 1.25rem;
-            line-height: 1.65;
-            color: #ffffff;
-            font-weight: 400;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        }
-
-        .romantic-text span {
-            color: #ff4d79;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 77, 121, 0.5);
-        }
-
-        /* Page 8: Proposal Screen */
-        #page8 {
-            background: #040108;
-        }
-
-        .proposal-heading {
-            font-family: 'Georgia', serif;
-            font-size: 2.3rem;
-            color: #ffffff;
-            margin-bottom: 55px;
-            font-style: italic;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0,0,0,0.8);
-            padding: 0 10px;
-        }
-
-        .proposal-heading span {
-            color: #ff4d79;
-            display: inline-block;
-            animation: heartBeat 1.2s infinite;
-            text-shadow: 0 0 15px rgba(255, 77, 121, 0.7);
-        }
-
-        .proposal-buttons {
+        .dual-gif {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            align-items: center;
-            z-index: 10;
+            gap: 10px;
+        }
+        
+        .dual-gif .gif-container {
+            height: 150px;
         }
 
-        .btn-proposal {
-            width: 85%;
-            padding: 18px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        /* TEXT STYLES */
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff8fa3;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 143, 163, 0.5);
         }
 
-        .btn-yes {
-            background: linear-gradient(45deg, #ff3366, #ff5c8a);
+        p {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
-            box-shadow: 0 0 30px rgba(255, 51, 102, 0.65);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: transform 0.2s;
-        }
-        .btn-yes:active { transform: scale(0.95); }
-
-        .btn-maybe {
-            background: #25163e;
-            color: #cbd5e1;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            transition: all 0.25s ease;
+            outline: none;
+            margin-top: 10px;
         }
 
-        /* Full Overlay Video Layout */
-        .video-container-page {
-            position: absolute;
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* MODAL (FOR LITTLE THINGS) */
+        .modal-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             display: none;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
         }
 
-        .video-container-page.active {
-            display: flex;
-        }
-
-        video {
+        .modal-content {
+            background: linear-gradient(160deg, #2c0e37, #120524);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            border-radius: 20px;
+            padding: 30px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            transform: scale(0.8);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        .tap-hint {
-            font-size: 0.95rem;
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
             color: rgba(255, 255, 255, 0.6);
-            margin-top: 30px;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-            animation: blink 1.5s infinite;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* High-End Keyframes Frame Mechanics */
-        @keyframes popEffect {
-            0% { transform: scale(1) rotate(-45deg); opacity: 1; }
-            40% { transform: scale(1.6) rotate(-45deg); background: #ff758c; opacity: 0.7; }
-            100% { transform: scale(0) rotate(-45deg); opacity: 0; }
+        .modal-text {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            font-style: italic;
+            color: #fff;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        /* MUSIC CONTROL */
+        .music-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            animation: rotate 5s linear infinite;
         }
 
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.25); }
+        .music-btn.paused {
+            animation-play-state: paused;
+            opacity: 0.6;
         }
 
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        /* KEYFRAMES */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes moonGlow {
-            0% { box-shadow: -12px 10px 0 2px #fffbe6, 0 0 20px rgba(255,251,230,0.2); }
-            100% { box-shadow: -12px 10px 0 2px #fffbe6, 0 0 35px rgba(255,251,230,0.45); }
+        @keyframes popIn {
+            to { transform: scale(1); }
         }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop preload="auto">
-        <source src="tere-liye.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
+        <source src="tere-liye.mp3" type="audio/mp3">
     </audio>
 
-    <div class="phone-container">
-        
-        <div class="page active" id="page1">
-            <div class="card-p1">
-                <h1 class="title-p1">Hey Beautiful... ✨</h1>
-                <p class="subtitle-p1">I am Sivasingh, and I have created something incredibly special just for you. Shall we begin?</p>
-                <button class="btn-romantic" onclick="startJourney()">Start Journey 💖</button>
+    <div class="app-container">
+        <div class="bg-gradient"></div>
+        <div class="dark-overlay"></div>
+        <div class="hearts-container" id="heartsContainer"></div>
+
+        <div class="header">
+            <div class="header-text">
+                Made by Sivasingh 💖<br>
+                <span class="brand">I'm Sorry Priya</span>
             </div>
         </div>
 
-        <div class="page" id="page2">
-            <div class="loader-container">
-                <div class="hearts-flow">
-                    <div class="moving-heart" id="moving-heart">❤️</div>
+        <div class="section active" id="section1">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="intro.gif" alt="Intro" onerror="this.src='https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif'">
                 </div>
-                <div class="progress-bar-wrapper">
-                    <div class="progress-fill" id="progress-fill">0%</div>
+                <h2>Hey Cutiepie Priya 🌹</h2>
+                <p>Can we talk for a moment?<br>There’s something important I want to tell you…</p>
+                <button class="btn" onclick="nextSection(2)">Continue ❤️</button>
+            </div>
+        </div>
+
+        <div class="section" id="section2">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="sorry1.gif" alt="Sorry" onerror="this.src='https://media.giphy.com/media/l4pT2ASyWWGw4NbDq/giphy.gif'">
                 </div>
-                <div class="loading-text">LOADING LOVE...</div>
+                <h2>Priya…</h2>
+                <p>I know I hurt you with my silly jokes…<br>and I’ve been feeling really bad about it.</p>
+                <button class="btn" onclick="nextSection(3)">Next →</button>
             </div>
         </div>
 
-        <div class="page" id="page3">
-            <div class="game-title">Stretch the bow to pop!</div>
-            
-            <div class="balloon-canvas">
-                <div class="balloon-column" id="balloon-stack">
-                    <div class="heart-balloon" id="b1"><div class="string"></div></div>
-                    <div class="heart-balloon" id="b2"><div class="string"></div></div>
-                    <div class="heart-balloon" id="b3"><div class="string"></div></div>
-                    <div class="heart-balloon" id="b4"><div class="string"></div></div>
-                    <div class="heart-balloon" id="b5"><div class="string"></div></div>
+        <div class="section" id="section3">
+            <div class="glass-card">
+                <h2>From my heart…</h2>
+                <div class="dual-gif">
+                    <div class="gif-container">
+                        <img src="heart1.gif" alt="Heart 1" onerror="this.src='https://media.giphy.com/media/LpDmM2wSt6Hm5fKJVa/giphy.gif'">
+                    </div>
+                    <div class="gif-container">
+                        <img src="heart2.gif" alt="Heart 2" onerror="this.src='https://media.giphy.com/media/R6gvnAx4h0t7a/giphy.gif'">
+                    </div>
                 </div>
+                <p>Tap to see the message ↓</p>
+                <button class="btn" onclick="nextSection(4)">Continue ❤️</button>
+            </div>
+        </div>
 
-                <div class="reason-popup" id="game-reason-popup">
-                    <p id="popup-reason-text">Reason message shows here!</p>
-                    <button onclick="closeReasonPopup()">Next Balloon 🎈</button>
+        <div class="section" id="section4">
+            <div class="glass-card">
+                <h2>Little things…</h2>
+                <p>Things I want you to know</p>
+                
+                <button class="btn btn-outline" onclick="openModal('regret')">
+                    💖 My Regret
+                </button>
+                <button class="btn btn-outline" onclick="openModal('care')">
+                    💖 My Care
+                </button>
+                <button class="btn btn-outline" onclick="openModal('promise')">
+                    💖 My Promise
+                </button>
+
+                <div style="margin-top: 30px;">
+                    <button class="btn" onclick="nextSection(5)">Next →</button>
                 </div>
             </div>
+        </div>
 
-            <div class="interactive-bow-space" id="bow-container">
-                <svg class="bow-svg-wrapper" id="bow-svg" viewBox="0 0 100 60">
-                    <path d="M 5 45 Q 50 10 95 45" fill="none" stroke="#db2777" stroke-width="4.5" stroke-linecap="round"/>
-                    <path d="M 5 45 L 50 45 L 95 45" id="bowstring" fill="none" stroke="#cbd5e1" stroke-width="2.5"/>
-                </svg>
-                <div class="arrow-graphic" id="interactive-arrow"></div>
-                <div class="control-trigger-node" id="pull-node"></div>
-                <div class="hint-drag-text" id="drag-hint">⬇️ Pull Down & Release ⬇️</div>
+        <div class="section" id="section5">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="promise.gif" alt="Promise" onerror="this.src='https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif'">
+                </div>
+                <p>
+                    I’m sorry <strong>Priya</strong>, for teasing you about your height and making you feel upset.<br>
+                    I never wanted to be the reason behind your anger or your silence.
+                </p>
+                <p>
+                    You matter to me more than I ever show.<br>
+                    I promise to listen, to understand, and to be a better friend every single day.
+                </p>
+                <p>
+                    I’m really trying… and I hope you can forgive me.
+                </p>
+                <button class="btn" onclick="nextSection(6)">Forgive Me? ❤️</button>
             </div>
         </div>
 
-        <div class="page" id="page4" onclick="nextPage(4)">
-            <div class="sky-bg"><div class="moon"></div><div class="stars-container"></div></div>
-            <div class="gif-frame-card">
-                <img src="gif1.gif" alt="Special Gift Animation" class="gif-element">
-                <h3 class="glowing-card-title">Every Little Thing...</h3>
-                <p class="glowing-card-desc">Every shared memory, every laugh, and every sweet moment reminds me of how wonderful you truly are.</p>
-            </div>
-            <div class="tap-hint">Tap anywhere to continue...</div>
-        </div>
-
-        <div class="page" id="page5" onclick="nextPage(5)">
-            <div class="sky-bg"><div class="stars-container"></div></div>
-            <div class="romantic-msg-card">
-                <img src="photo1.jpg" alt="Memory 1" class="romantic-img-frame">
-                <p class="romantic-text">Out of all the beautiful paths in life, the ones <span>I want to walk</span> are always the ones with you.</p>
-            </div>
-            <div class="tap-hint">Tap to feel more...</div>
-        </div>
-
-        <div class="page" id="page6" onclick="nextPage(6)">
-            <div class="sky-bg"><div class="stars-container"></div></div>
-            <div class="romantic-msg-card">
-                <img src="photo2.jpg" alt="Memory 2" class="romantic-img-frame">
-                <p class="romantic-text">They say perfection doesn't exist, but every single time <span>you smile</span>, I see a universe that's absolutely perfect.</p>
-            </div>
-            <div class="tap-hint">Tap to proceed...</div>
-        </div>
-
-        <div class="page" id="page7" onclick="nextPage(7)">
-            <div class="sky-bg"><div class="stars-container"></div></div>
-            <div class="romantic-msg-card">
-                <img src="photo3.jpg" alt="Memory 3" class="romantic-img-frame">
-                <p class="romantic-text">Before I move to what's inside my heart, I just wanted to remind you that <span>you are truly loved</span> just the way you are.</p>
-            </div>
-            <div class="tap-hint">Ready for the final step? Tap!</div>
-        </div>
-
-        <div class="page" id="page8">
-            <div class="sky-bg"><div class="moon"></div><div class="stars-container"></div></div>
-            <h2 class="proposal-heading">Will you be my babu😁 <span>❤️</span>?</h2>
-            
-            <div class="proposal-buttons">
-                <button class="btn-proposal btn-yes" onclick="showFinalVideo()">Absolutely Yes! 🌹</button>
-                <button class="btn-proposal btn-maybe" id="maybe-btn" onmouseover="moveMaybeButton()" ontouchstart="moveMaybeButton()" onclick="moveMaybeButton()">Maybe Later</button>
+        <div class="section" id="section6">
+            <div class="glass-card" style="padding: 40px 20px;">
+                <div class="gif-container">
+                    <img src="endlove.gif" alt="End Love" onerror="this.src='https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif'">
+                </div>
+                <h2>I Promise...</h2>
+                <p style="font-size: 1.1rem; margin-top: 20px;">
+                    I promise to joke less about things that hurt,<br>
+                    understand your feelings better,<br>
+                    and always keep our friendship strong.
+                </p>
+                <br>
+                <small>Best Friends Forever.</small>
             </div>
         </div>
 
-        <div class="video-container-page" id="video-page">
-            <video id="final-video" playsinline>
-                <source src="video1.mp4" type="video/mp4">
-            </video>
+        <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+            🎵
+        </div>
+
+        <div class="modal-overlay" id="messageModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">✖</button>
+                <h2 id="modalTitle">Title</h2>
+                <p class="modal-text" id="modalText">Message goes here...</p>
+            </div>
         </div>
 
     </div>
 
     <script>
-        let currentBgMusic = document.getElementById('bg-music');
-        let finalVideo = document.getElementById('final-video');
-        
-        const reasonsList = [
-            "Every moment with you feels special 🌷",
-            "Your heart is genuinely so kind 💖",
-            "You always know how to make me laugh 😂",
-            "Your smile feels so comforting 🤍",
-            "You make my entire universe complete! ✨"
-        ];
-        
-        let currentLevel = 1; 
+        /* --- AUDIO LOGIC --- */
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+        let musicStarted = false;
 
-        function startJourney() {
-            currentBgMusic.play().catch(err => console.log("Interaction triggered sound"));
-            switchPage(1, 2);
-            runLoveLoader();
+        music.volume = 0.35; // Set volume to 35%
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.classList.add('paused');
+            } else {
+                music.play();
+                musicBtn.classList.remove('paused');
+            }
+            isPlaying = !isPlaying;
         }
 
-        function switchPage(from, to) {
-            document.getElementById(`page${from}`).classList.remove('active');
-            document.getElementById(`page${to}`).classList.add('active');
-        }
-
-        function runLoveLoader() {
-            let progress = 0;
-            const fill = document.getElementById('progress-fill');
-            const heart = document.getElementById('moving-heart');
-            
-            const interval = setInterval(() => {
-                progress += 1;
-                fill.style.width = `${progress}%`;
-                fill.innerText = `${progress}%`;
-                heart.style.left = `${progress}%`;
-
-                if(progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        switchPage(2, 3);
-                        setupBowMechanics();
-                    }, 600);
-                }
-            }, 30);
-        }
-
-        // High-Quality Drag, Pull back and Shooting Engine Logic
-        function setupBowMechanics() {
-            const pullNode = document.getElementById('pull-node');
-            const bowstring = document.getElementById('bowstring');
-            const arrow = document.getElementById('interactive-arrow');
-            const dragHint = document.getElementById('drag-hint');
-            
-            let isDragging = false;
-            let startY = 0;
-            let currentDeltaY = 0;
-            const maxPull = 75; // Increased maximum pull limit for better control structure
-
-            function onDragStart(e) {
-                if (document.getElementById('game-reason-popup').classList.contains('show')) return;
-                isDragging = true;
-                startY = e.touches ? e.touches[0].clientY : e.clientY;
-                
-                pullNode.style.transition = 'none';
-                bowstring.style.transition = 'none';
-                arrow.style.transition = 'none';
-                dragHint.style.opacity = '0';
-            }
-
-            function onDragMove(e) {
-                if (!isDragging) return;
-                const currentY = e.touches ? e.touches[0].clientY : e.clientY;
-                currentDeltaY = currentY - startY;
-                
-                if (currentDeltaY < 0) currentDeltaY = 0;
-                if (currentDeltaY > maxPull) currentDeltaY = maxPull;
-                
-                pullNode.style.transform = `translate(-50%, ${currentDeltaY}px)`;
-                arrow.style.transform = `translate(-50%, ${currentDeltaY}px)`;
-                // Stretch string anchor dynamically based on pulling calculations
-                bowstring.setAttribute('d', `M 5 45 L 50 ${45 + currentDeltaY} L 95 45`);
-            }
-
-            function onDragEnd() {
-                if (!isDragging) return;
-                isDragging = false;
-                
-                if (currentDeltaY > 30) {
-                    executeArrowShot();
-                } else {
-                    resetBowString();
-                }
-            }
-
-            function resetBowString() {
-                pullNode.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                bowstring.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                arrow.style.transition = 'all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                
-                pullNode.style.transform = 'translateX(-50%)';
-                arrow.style.transform = 'translateX(-50%)';
-                bowstring.setAttribute('d', 'M 5 45 L 50 45 L 95 45');
-                dragHint.style.opacity = '1';
-                currentDeltaY = 0;
-            }
-
-            function executeArrowShot() {
-                // High velocity animation vector
-                arrow.style.transition = 'transform 0.18s cubic-bezier(0.215, 0.610, 0.355, 1)';
-                arrow.style.transform = 'translate(-50%, -550px)';
-                
-                // Elastic bow back snap response simulation
-                pullNode.style.transition = 'all 0.05s ease';
-                bowstring.style.transition = 'all 0.05s ease';
-                pullNode.style.transform = 'translateX(-50%)';
-                bowstring.setAttribute('d', 'M 5 45 L 50 38 L 95 45');
-                
-                setTimeout(() => {
-                    bowstring.setAttribute('d', 'M 5 45 L 50 45 L 95 45');
-                    processPopDetection();
-                }, 200);
-            }
-
-            // Universal Input Listeners
-            pullNode.addEventListener('mousedown', onDragStart);
-            window.addEventListener('mousemove', onDragMove);
-            window.addEventListener('mouseup', onDragEnd);
-
-            pullNode.addEventListener('touchstart', onDragStart, { passive: true });
-            window.addEventListener('touchmove', onDragMove, { passive: false });
-            window.addEventListener('touchend', onDragEnd);
-        }
-
-        function processPopDetection() {
-            const activeBalloon = document.getElementById(`b${currentLevel}`);
-            if (activeBalloon) {
-                activeBalloon.classList.add('popped');
-                
-                setTimeout(() => {
-                    document.getElementById('popup-reason-text').innerText = reasonsList[currentLevel - 1];
-                    document.getElementById('game-reason-popup').classList.add('show');
-                }, 350);
+        function ensureMusicPlays() {
+            if (!musicStarted) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicStarted = true;
+                    musicBtn.classList.remove('paused');
+                }).catch(e => {
+                    console.log("Auto-play blocked, waiting for interaction");
+                });
             }
         }
 
-        function closeReasonPopup() {
-            document.getElementById('game-reason-popup').classList.remove('show');
-            
-            const arrow = document.getElementById('interactive-arrow');
-            const dragHint = document.getElementById('drag-hint');
-            arrow.style.transition = 'none';
-            arrow.style.transform = 'translateX(-50%)';
-            dragHint.style.opacity = '1';
-            
-            currentLevel++;
-            
-            if (currentLevel > 5) {
-                setTimeout(() => {
-                    switchPage(3, 4);
-                }, 400);
+        /* --- NAVIGATION LOGIC --- */
+        function nextSection(sectionNumber) {
+            // Try to start music on first button click if it hasn't started
+            ensureMusicPlays();
+
+            // Hide current section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Show next section
+            const target = document.getElementById('section' + sectionNumber);
+            if (target) {
+                target.classList.add('active');
             }
         }
 
-        function nextPage(pageNum) {
-            switchPage(pageNum, pageNum + 1);
+        /* --- MODAL LOGIC (LITTLE THINGS) --- */
+        const modal = document.getElementById('messageModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+
+        const messages = {
+            regret: {
+                title: "My Regret 💔",
+                text: "I regret teasing you Priya… I never meant to cause you pain or make you feel bad about yourself. Seeing you upset because of my silly words is the last thing I ever wanted."
+            },
+            care: {
+                title: "My Care ✨",
+                text: "You matter to me Priya more than words can explain… Your smile, your happiness, and your peace matter to me more than any stupid jokes."
+            },
+            promise: {
+                title: "My Promise 🤝",
+                text: "I promise to be more thoughtful, understand you better, and never make fun of things that hurt your feelings again. I will be the best friend you deserve."
+            }
+        };
+
+        function openModal(type) {
+            const content = messages[type];
+            modalTitle.innerText = content.title;
+            modalText.innerText = content.text;
+            modal.style.display = 'flex';
         }
 
-        function moveMaybeButton() {
-            const btn = document.getElementById('maybe-btn');
-            const container = document.querySelector('.phone-container');
-            
-            const maxW = container.clientWidth - btn.clientWidth - 30;
-            const maxH = container.clientHeight - btn.clientHeight - 150;
-            
-            const randomX = Math.max(15, Math.floor(Math.random() * maxW));
-            const randomY = Math.max(80, Math.floor(Math.random() * maxH));
-            
-            btn.style.position = 'absolute';
-            btn.style.left = randomX + 'px';
-            btn.style.top = randomY + 'px';
+        function closeModal() {
+            modal.style.display = 'none';
         }
 
-        function showFinalVideo() {
-            currentBgMusic.pause();
-            const videoPage = document.getElementById('video-page');
-            videoPage.classList.add('active');
-            finalVideo.currentTime = 0;
-            finalVideo.play();
+        /* --- FLOATING HEARTS GENERATOR --- */
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Randomize position and animation duration
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // 3-5s
+            
+            // Randomize color slightly
+            const colors = ['#ff6b81', '#ff4757', '#e84118', '#ff6b6b'];
+            heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
         }
+
+        setInterval(createHeart, 300);
+
     </script>
 </body>
-                    </html>
+    </html>
